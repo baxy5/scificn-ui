@@ -1,0 +1,11 @@
+{
+  "name": "heatmap",
+  "description": "Grid of colored cells showing density or activity. Opacity-based intensity scaling. Supports row/column labels.",
+  "files": [
+    { "path": "src/ui/heatmap/heatmap.tsx", "type": "component" },
+    { "path": "src/ui/heatmap/index.ts",    "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "bar-chart",
+  "description": "CSS-only bar chart with horizontal and vertical orientations. No charting library dependency.",
+  "files": [
+    { "path": "src/ui/bar-chart/bar-chart.tsx", "type": "component" },
+    { "path": "src/ui/bar-chart/index.ts",      "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

@@ -15,7 +15,14 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
+  StatCard,
+  Terminal,
+  StatusGrid,
+  ProgressRing,
+  Grid,
 } from '@/ui'
+import type { TerminalLine } from '@/ui/terminal'
+import type { SystemStatus } from '@/ui/status-grid'
 
 type BadgeVariant = 'ACTIVE' | 'OFFLINE' | 'WARNING' | 'CRITICAL' | 'SCANNING'
 
@@ -42,32 +49,6 @@ const crew = [
   { name: 'PARKER, D.', role: 'CHIEF ENGINEER', status: 'OFFLINE' as BadgeVariant },
 ]
 
-const logs = [
-  {
-    id: 'MU-0937-A',
-    entry: 'Commercial towing vehicle Nostromo. Crew: seven. Cargo: refinery processing unit. Returning to Earth with crew in hypersleep.',
-    time: '2122.06.03 // 00:14',
-    tag: 'STATUS' as const,
-  },
-  {
-    id: 'MU-0937-B',
-    entry: 'Distress signal LV-426 origin confirmed. Rerouting per Company directive. Crew awakened from hypersleep. Proceeding to source.',
-    time: '2122.06.07 // 09:41',
-    tag: 'INFO' as const,
-  },
-  {
-    id: 'MU-0937-C',
-    entry: 'Crew member Kane, G. returned to ship with unknown organism attached to face. Quarantine protocol bypassed. Science Officer authorised entry.',
-    time: '2122.06.08 // 03:22',
-    tag: 'WARNING' as const,
-  },
-  {
-    id: 'MU-0937-D',
-    entry: 'SPECIAL ORDER 937. Priority One. All other priorities rescinded. Crew expendable. Bring back organism. Specimen integrity paramount.',
-    time: '2122.06.09 // 17:05',
-    tag: 'CRITICAL' as const,
-  },
-]
 
 const cargo = [
   { item: 'CRUDE OIL REFINERY UNIT', mass: '65,000t', status: 'ACTIVE' as BadgeVariant },
@@ -77,9 +58,34 @@ const cargo = [
   { item: 'MAINTENANCE DRONE × 3', mass: '0.6t', status: 'OFFLINE' as BadgeVariant },
 ]
 
+const motherLog: TerminalLine[] = [
+  { type: 'system', text: 'MU/TH/UR 6000 INTERFACE ACTIVE', timestamp: '2122.06.03 00:14' },
+  { type: 'output', text: 'Commercial towing vehicle Nostromo. Crew: seven. Cargo: refinery unit.', timestamp: '2122.06.03 00:14' },
+  { type: 'output', text: 'Distress signal LV-426 origin confirmed. Rerouting per directive.', timestamp: '2122.06.07 09:41' },
+  { type: 'warn',   text: 'Crew member Kane returned with unknown organism — quarantine bypassed.', timestamp: '2122.06.08 03:22' },
+  { type: 'system', text: 'SPECIAL ORDER 937 ACTIVATED — CREW EXPENDABLE', timestamp: '2122.06.09 17:05' },
+  { type: 'error',  text: 'Specimen loose. Acid trace confirmed on deck C-7.', timestamp: '2122.06.09 20:11' },
+  { type: 'error',  text: 'CRITICAL: Dallas, Lambert, Parker — OFFLINE', timestamp: '2122.06.09 22:44' },
+  { type: 'input',  text: 'MOTHER — does the crew survive?', timestamp: '2122.06.09 23:01' },
+  { type: 'system', text: 'UNABLE TO COMPLY. SPECIAL ORDER 937 SUPERSEDES.', timestamp: '2122.06.09 23:01' },
+]
+
+function useNarrow(threshold = 900): boolean {
+  const [narrow, setNarrow] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < threshold
+  )
+  useEffect(() => {
+    const handle = () => setNarrow(window.innerWidth < threshold)
+    window.addEventListener('resize', handle, { passive: true })
+    return () => window.removeEventListener('resize', handle)
+  }, [threshold])
+  return narrow
+}
+
 export default function AlienShowcase() {
   const [arming, setArming] = useState(false)
   const [armed, setArmed] = useState(false)
+  const narrow = useNarrow()
 
   // Apply alien theme on mount, restore previous on unmount
   useEffect(() => {
@@ -192,10 +198,10 @@ export default function AlienShowcase() {
         style={{
           flex: 1,
           display: 'grid',
-          gridTemplateColumns: '256px 1fr 260px',
+          gridTemplateColumns: narrow ? '1fr' : '256px 1fr 260px',
           gap: '1px',
           background: 'var(--border)',
-          overflow: 'hidden',
+          overflow: narrow ? 'visible' : 'hidden',
         }}
       >
         {/* ── LEFT: CREW STATUS ── */}
@@ -217,52 +223,13 @@ export default function AlienShowcase() {
                 <Badge variant="WARNING">1 / 7 ACTIVE</Badge>
               </div>
             </PanelHeader>
-            <PanelContent>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {crew.map((member, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '0.45rem 0',
-                      borderBottom: i < crew.length - 1 ? '1px solid var(--border)' : 'none',
-                    }}
-                  >
-                    <div>
-                      <div
-                        style={{
-                          fontSize: '0.68rem',
-                          color:
-                            member.status === 'ACTIVE'
-                              ? 'var(--color-green)'
-                              : member.status === 'WARNING'
-                                ? 'var(--color-amber)'
-                                : 'var(--text-muted)',
-                          letterSpacing: '0.04em',
-                          textShadow:
-                            member.status === 'ACTIVE' ? 'var(--text-glow-green)' : 'none',
-                        }}
-                      >
-                        {member.name}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: '0.57rem',
-                          color: 'var(--text-muted)',
-                          letterSpacing: '0.08em',
-                          marginTop: '1px',
-                        }}
-                      >
-                        {member.role}
-                      </div>
-                    </div>
-                    <Badge variant={member.status}>{member.status}</Badge>
-                  </div>
-                ))}
-              </div>
-            </PanelContent>
+            <StatusGrid
+              systems={crew.map((m) => ({
+                name:   m.name,
+                status: m.status as SystemStatus,
+                detail: m.role,
+              }))}
+            />
           </Panel>
 
           {/* MOTHER alert */}
@@ -341,6 +308,14 @@ export default function AlienShowcase() {
             overflowY: 'auto',
           }}
         >
+          {/* Key vitals */}
+          <Grid preset="4-col" gap="0.75rem">
+            <StatCard label="CREW ACTIVE"  value="1 / 7" variant="CRITICAL" sublabel="RIPLEY ONLY"  />
+            <StatCard label="O₂ LEVEL"     value="97%"   variant="ACTIVE"   sublabel="NOMINAL"      />
+            <StatCard label="CO₂ SCRUBBER" value="12%"   variant="CRITICAL" sublabel="FAILING"      />
+            <StatCard label="REACTOR"      value="91%"   variant="ACTIVE"   sublabel="ONLINE"        />
+          </Grid>
+
           <Panel notch="md" style={{ flex: 1 }}>
             <PanelHeader>
               <PanelTitle>SHIP SYSTEMS // NOSTROMO</PanelTitle>
@@ -382,51 +357,10 @@ export default function AlienShowcase() {
                     </pre>
                   </div>
 
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap: '0.75rem',
-                    }}
-                  >
-                    {[
-                      { label: 'HEAT SIGNATURES', value: '1 HOSTILE', color: 'var(--color-red)' },
-                      { label: 'ACID TRACE', value: 'DECK C-7', color: 'var(--color-amber)' },
-                      { label: 'MOVEMENT', value: 'CONFIRMED', color: 'var(--color-amber)' },
-                    ].map((stat) => (
-                      <div
-                        key={stat.label}
-                        style={{
-                          padding: '0.875rem',
-                          border: '1px solid var(--border)',
-                          background: 'var(--surface)',
-                          textAlign: 'center',
-                        }}
-                      >
-                        <div
-                          style={{
-                            fontSize: '0.58rem',
-                            color: 'var(--text-muted)',
-                            letterSpacing: '0.12em',
-                            marginBottom: '0.35rem',
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {stat.label}
-                        </div>
-                        <div
-                          style={{
-                            fontSize: '0.9rem',
-                            color: stat.color,
-                            fontWeight: 700,
-                            letterSpacing: '0.06em',
-                            fontFamily: 'var(--font-mono)',
-                          }}
-                        >
-                          {stat.value}
-                        </div>
-                      </div>
-                    ))}
+                  <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '0.5rem' }}>
+                    <ProgressRing value={100} label="HEAT SIG"  variant="CRITICAL" size={80} showValue={false} />
+                    <ProgressRing value={80}  label="ACID TRACE" variant="WARNING"  size={80} showValue={false} />
+                    <ProgressRing value={100} label="MOVEMENT"  variant="CRITICAL" size={80} showValue={false} />
                   </div>
                 </TabsContent>
 
@@ -465,33 +399,13 @@ export default function AlienShowcase() {
 
                 {/* SHIP LOG TAB */}
                 <TabsContent value="log" style={{ margin: 0, padding: '1rem' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
-                    {logs.map((log) => (
-                      <Alert key={log.id} variant={log.tag}>
-                        <AlertTitle>
-                          <span
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              alignItems: 'center',
-                            }}
-                          >
-                            <span>LOG {log.id}</span>
-                            <span
-                              style={{
-                                color: 'var(--text-muted)',
-                                fontWeight: 400,
-                                fontSize: '0.6rem',
-                              }}
-                            >
-                              {log.time}
-                            </span>
-                          </span>
-                        </AlertTitle>
-                        <AlertDescription>{log.entry}</AlertDescription>
-                      </Alert>
-                    ))}
-                  </div>
+                  <Terminal
+                    lines={motherLog}
+                    title="MU/TH/UR 6000 — SHIP LOG"
+                    height="22rem"
+                    blinkCursor={false}
+                    style={{ width: '100%' }}
+                  />
                 </TabsContent>
               </Tabs>
             </PanelContent>
@@ -608,13 +522,14 @@ export default function AlienShowcase() {
       {/* ── COMMAND FOOTER ── */}
       <footer
         style={{
-          height: '52px',
+          minHeight: '52px',
           background: 'var(--surface)',
           borderTop: '1px solid var(--border)',
           display: 'flex',
           alignItems: 'center',
-          padding: '0 1.25rem',
-          gap: '0.625rem',
+          flexWrap: 'wrap',
+          padding: '0.5rem 1.25rem',
+          gap: '0.5rem',
           position: 'sticky',
           bottom: 0,
           zIndex: 50,

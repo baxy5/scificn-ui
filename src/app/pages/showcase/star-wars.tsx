@@ -15,7 +15,12 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
+  StatCard,
+  StatusGrid,
+  ProgressRing,
+  Grid,
 } from '@/ui'
+import type { SystemStatus } from '@/ui/status-grid'
 
 type BadgeVariant = 'ACTIVE' | 'OFFLINE' | 'WARNING' | 'CRITICAL' | 'SCANNING'
 
@@ -77,9 +82,22 @@ const activeUnits = [
   { name: 'PROBE DROID', status: 'ACTIVE' as BadgeVariant },
 ]
 
+function useNarrow(threshold = 900): boolean {
+  const [narrow, setNarrow] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < threshold
+  )
+  useEffect(() => {
+    const handle = () => setNarrow(window.innerWidth < threshold)
+    window.addEventListener('resize', handle, { passive: true })
+    return () => window.removeEventListener('resize', handle)
+  }, [threshold])
+  return narrow
+}
+
 export default function StarWarsShowcase() {
   const [orderSent, setOrderSent] = useState(false)
   const [countdown, setCountdown] = useState('04:12')
+  const narrow = useNarrow()
 
   // Apply star-wars theme on mount, restore previous on unmount
   useEffect(() => {
@@ -200,10 +218,10 @@ export default function StarWarsShowcase() {
         style={{
           flex: 1,
           display: 'grid',
-          gridTemplateColumns: '272px 1fr 256px',
+          gridTemplateColumns: narrow ? '1fr' : '272px 1fr 256px',
           gap: '1px',
           background: 'var(--border)',
-          overflow: 'hidden',
+          overflow: narrow ? 'visible' : 'hidden',
         }}
       >
         {/* ── LEFT: MISSION OPS ── */}
@@ -345,6 +363,13 @@ export default function StarWarsShowcase() {
 
                 {/* TACTICAL TAB */}
                 <TabsContent value="tactical" style={{ margin: 0, padding: '1rem' }}>
+                  {/* Key metrics */}
+                  <Grid preset="3-col" gap="0.75rem" style={{ marginBottom: '1rem' }}>
+                    <StatCard label="TARGET LOCK"       value="100%"    variant="CRITICAL" sublabel="YAVIN IV"   />
+                    <StatCard label="T-MINUS IMPACT"    value={countdown} variant="WARNING" sublabel="COUNTDOWN" />
+                    <StatCard label="SUPERLASER CHARGE" value="94%"     variant="ACTIVE"   sublabel="READY"      />
+                  </Grid>
+
                   {/* ASCII Map */}
                   <div
                     style={{
@@ -370,53 +395,6 @@ export default function StarWarsShowcase() {
                     </pre>
                   </div>
 
-                  {/* Stat grid */}
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap: '0.75rem',
-                    }}
-                  >
-                    {[
-                      { label: 'TARGET LOCK', value: '100%', color: 'var(--color-red)' },
-                      { label: 'FIRING RANGE', value: 'IN RANGE', color: 'var(--color-green)' },
-                      { label: 'T-MINUS IMPACT', value: countdown, color: 'var(--color-amber)' },
-                    ].map((stat) => (
-                      <div
-                        key={stat.label}
-                        style={{
-                          padding: '0.875rem',
-                          border: '1px solid var(--border)',
-                          background: 'var(--surface)',
-                          textAlign: 'center',
-                        }}
-                      >
-                        <div
-                          style={{
-                            fontSize: '0.58rem',
-                            color: 'var(--text-muted)',
-                            letterSpacing: '0.12em',
-                            marginBottom: '0.35rem',
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {stat.label}
-                        </div>
-                        <div
-                          style={{
-                            fontSize: '1.05rem',
-                            color: stat.color,
-                            fontWeight: 700,
-                            letterSpacing: '0.06em',
-                            fontFamily: 'var(--font-mono)',
-                          }}
-                        >
-                          {stat.value}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </TabsContent>
 
                 {/* COMMS TAB */}
@@ -534,6 +512,20 @@ export default function StarWarsShowcase() {
               <PanelTitle>SYSTEM STATUS</PanelTitle>
             </PanelHeader>
             <PanelContent>
+              {/* Key system rings */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  paddingBottom: '1rem',
+                  marginBottom: '1rem',
+                  borderBottom: '1px solid var(--border)',
+                }}
+              >
+                <ProgressRing value={91}  label="POWER"    variant="ACTIVE"   size={76} />
+                <ProgressRing value={94}  label="SUPERLASER" variant="CRITICAL" size={76} />
+                <ProgressRing value={73}  label="SHIELDS"  variant="WARNING"  size={76} />
+              </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
                 <Progress value={91} label="MAIN POWER" />
                 <Progress value={73} label="DEFLECTOR SHIELDS" />
@@ -549,31 +541,9 @@ export default function StarWarsShowcase() {
             <PanelHeader>
               <PanelTitle>ACTIVE UNITS</PanelTitle>
             </PanelHeader>
-            <PanelContent>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {activeUnits.map((unit, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      fontSize: '0.68rem',
-                      padding: '0.4rem 0',
-                      borderBottom:
-                        i < activeUnits.length - 1 ? '1px solid var(--border)' : 'none',
-                    }}
-                  >
-                    <span
-                      style={{ color: 'var(--text-secondary)', letterSpacing: '0.04em' }}
-                    >
-                      {unit.name}
-                    </span>
-                    <Badge variant={unit.status}>{unit.status}</Badge>
-                  </div>
-                ))}
-              </div>
-            </PanelContent>
+            <StatusGrid
+              systems={activeUnits.map((u) => ({ name: u.name, status: u.status as SystemStatus }))}
+            />
           </Panel>
 
           {/* Personnel */}
@@ -636,13 +606,14 @@ export default function StarWarsShowcase() {
       {/* ── COMMAND FOOTER ── */}
       <footer
         style={{
-          height: '52px',
+          minHeight: '52px',
           background: 'var(--surface)',
           borderTop: '1px solid var(--border)',
           display: 'flex',
           alignItems: 'center',
-          padding: '0 1.25rem',
-          gap: '0.625rem',
+          flexWrap: 'wrap',
+          padding: '0.5rem 1.25rem',
+          gap: '0.5rem',
           position: 'sticky',
           bottom: 0,
           zIndex: 50,

@@ -10,7 +10,7 @@ const showcases = [
     themeColor: '#1a6dff',
     description:
       'Full-screen Imperial Navy sector command terminal. Features a tactical grid, mission briefing, comm channels, and live system status readouts.',
-    components: ['Panel', 'Badge', 'Button', 'Alert', 'Progress', 'Tabs'],
+    components: ['Panel', 'Badge', 'Button', 'Alert', 'Progress', 'Tabs', 'StatCard', 'StatusGrid', 'ProgressRing', 'Grid'],
     path: '/showcase/star-wars',
   },
   {
@@ -20,7 +20,7 @@ const showcases = [
     themeColor: '#E0D5BE',
     description:
       'USCSS Nostromo crew terminal powered by MU/TH/UR 6000. Features crew vitals, sensor sweep, life support readings, cargo manifest, and emergency systems.',
-    components: ['Panel', 'Badge', 'Button', 'Alert', 'Progress', 'Tabs'],
+    components: ['Panel', 'Badge', 'Button', 'Alert', 'Progress', 'Tabs', 'StatCard', 'Terminal', 'StatusGrid', 'ProgressRing', 'Grid'],
     path: '/showcase/alien',
   },
   {
@@ -30,7 +30,7 @@ const showcases = [
     themeColor: '#00ed3f',
     description:
       'Deep space station operations terminal. Manage vessel docking, monitor station modules, track crew, and respond to incoming transmissions.',
-    components: ['Panel', 'Badge', 'Button', 'Alert', 'Progress', 'Tabs'],
+    components: ['Panel', 'Badge', 'Button', 'Alert', 'Progress', 'Tabs', 'StatCard', 'Terminal', 'StatusGrid', 'ProgressRing', 'Grid'],
     path: '/showcase/sci-fi',
   },
 ]

@@ -1,0 +1,11 @@
+{
+  "name": "progress-ring",
+  "description": "SVG circular gauge with glow arc. Complements the linear Progress bar. Variants: DEFAULT, ACTIVE, WARNING, CRITICAL.",
+  "files": [
+    { "path": "src/ui/progress-ring/progress-ring.tsx", "type": "component" },
+    { "path": "src/ui/progress-ring/index.ts",          "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

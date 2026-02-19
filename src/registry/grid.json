@@ -1,0 +1,11 @@
+{
+  "name": "grid",
+  "description": "Responsive dashboard layout wrapper with pre-baked column presets and custom column support.",
+  "files": [
+    { "path": "src/ui/grid/grid.tsx", "type": "component" },
+    { "path": "src/ui/grid/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

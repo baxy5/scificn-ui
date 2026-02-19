@@ -1,0 +1,11 @@
+{
+  "name": "terminal",
+  "description": "Scrollable log/output block with typed line entries, color-coded types, and a blinking cursor.",
+  "files": [
+    { "path": "src/ui/terminal/terminal.tsx", "type": "component" },
+    { "path": "src/ui/terminal/index.ts",     "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

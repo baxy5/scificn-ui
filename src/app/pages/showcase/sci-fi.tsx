@@ -15,7 +15,14 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
+  StatCard,
+  Terminal,
+  StatusGrid,
+  ProgressRing,
+  Grid,
 } from '@/ui'
+import type { TerminalLine } from '@/ui/terminal'
+import type { SystemStatus } from '@/ui/status-grid'
 
 type BadgeVariant = 'ACTIVE' | 'OFFLINE' | 'WARNING' | 'CRITICAL' | 'SCANNING'
 
@@ -121,9 +128,34 @@ const comms = [
   },
 ]
 
+const missionLog: TerminalLine[] = [
+  { type: 'system', text: 'NEXUS-7 OPS CONTROL ONLINE — ALL SYSTEMS NOMINAL', timestamp: '04:00:00' },
+  { type: 'output', text: 'DSV PROMETHEUS position lock acquired — 0.4 AU inbound', timestamp: '04:02:15' },
+  { type: 'warn',   text: 'PROMETHEUS: reactor coolant breach detected in section 4', timestamp: '04:10:44' },
+  { type: 'error',  text: 'MAYDAY received — PROMETHEUS requesting emergency docking Bay 3', timestamp: '04:13:07' },
+  { type: 'input',  text: 'authorize docking --vessel DSV-PROMETHEUS --bay 3', timestamp: '04:15:02' },
+  { type: 'output', text: 'Bay 3 corridor pressurised. Medical team on standby.', timestamp: '04:15:04' },
+  { type: 'warn',   text: 'RESEARCH LAB coolant pressure below nominal — maintenance dispatched', timestamp: '04:17:22' },
+  { type: 'system', text: 'EXTERNAL ARRAY offline — scheduled maintenance window', timestamp: '04:18:00' },
+  { type: 'input',  text: 'status --all', timestamp: '04:20:00' },
+]
+
+function useNarrow(threshold = 900): boolean {
+  const [narrow, setNarrow] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < threshold
+  )
+  useEffect(() => {
+    const handle = () => setNarrow(window.innerWidth < threshold)
+    window.addEventListener('resize', handle, { passive: true })
+    return () => window.removeEventListener('resize', handle)
+  }, [threshold])
+  return narrow
+}
+
 export default function SciFiShowcase() {
   const [dockingAuthorized, setDockingAuthorized] = useState(false)
   const [tick, setTick] = useState(0)
+  const narrow = useNarrow()
 
   // Apply default sci-fi theme (no data-theme attribute) on mount
   useEffect(() => {
@@ -241,10 +273,10 @@ export default function SciFiShowcase() {
         style={{
           flex: 1,
           display: 'grid',
-          gridTemplateColumns: '256px 1fr 260px',
+          gridTemplateColumns: narrow ? '1fr' : '256px 1fr 260px',
           gap: '1px',
           background: 'var(--border)',
-          overflow: 'hidden',
+          overflow: narrow ? 'visible' : 'hidden',
         }}
       >
         {/* ── LEFT: STATION STATUS ── */}
@@ -266,40 +298,9 @@ export default function SciFiShowcase() {
                 <Badge variant="WARNING">1 FAULT</Badge>
               </div>
             </PanelHeader>
-            <PanelContent>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {modules.map((mod, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '0.4rem 0',
-                      borderBottom: i < modules.length - 1 ? '1px solid var(--border)' : 'none',
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: '0.68rem',
-                        color:
-                          mod.status === 'ACTIVE'
-                            ? 'var(--text-secondary)'
-                            : mod.status === 'WARNING'
-                              ? 'var(--color-amber)'
-                              : mod.status === 'OFFLINE'
-                                ? 'var(--text-muted)'
-                                : 'var(--color-green)',
-                        letterSpacing: '0.04em',
-                      }}
-                    >
-                      {mod.name}
-                    </span>
-                    <Badge variant={mod.status}>{mod.status}</Badge>
-                  </div>
-                ))}
-              </div>
-            </PanelContent>
+            <StatusGrid
+              systems={modules.map((m) => ({ name: m.name, status: m.status as SystemStatus }))}
+            />
           </Panel>
 
           {/* Active crew */}
@@ -385,6 +386,14 @@ export default function SciFiShowcase() {
             overflowY: 'auto',
           }}
         >
+          {/* Key metrics */}
+          <Grid preset="4-col" gap="0.75rem">
+            <StatCard label="REACTOR OUTPUT" value="89%"  delta="+2%"  deltaPositive sublabel="NOMINAL"   variant="ACTIVE"   />
+            <StatCard label="HULL INTEGRITY" value="76%"  delta="-4%"  deltaPositive={false} sublabel="STANDARD"  />
+            <StatCard label="CREW ON DUTY"   value="5"                 sublabel="ALL ACTIVE" variant="ACTIVE"   />
+            <StatCard label="VESSELS TRACKED" value="4"               sublabel="1 CRITICAL"  variant="WARNING"  />
+          </Grid>
+
           <Panel notch="md" style={{ flex: 1 }}>
             <PanelHeader>
               <PanelTitle>OPERATIONS // NEXUS-7</PanelTitle>
@@ -398,6 +407,7 @@ export default function SciFiShowcase() {
                   <TabsTrigger value="docking">DOCKING</TabsTrigger>
                   <TabsTrigger value="comms">COMMS</TabsTrigger>
                   <TabsTrigger value="radar">RADAR</TabsTrigger>
+                  <TabsTrigger value="log">LOG</TabsTrigger>
                 </TabsList>
 
                 {/* DOCKING TAB */}
@@ -611,6 +621,16 @@ export default function SciFiShowcase() {
                     ))}
                   </div>
                 </TabsContent>
+                {/* LOG TAB */}
+                <TabsContent value="log" style={{ margin: 0, padding: '1rem' }}>
+                  <Terminal
+                    lines={missionLog}
+                    title="MISSION LOG"
+                    height="22rem"
+                    style={{ width: '100%' }}
+                  />
+                </TabsContent>
+
               </Tabs>
             </PanelContent>
           </Panel>
@@ -633,6 +653,20 @@ export default function SciFiShowcase() {
               <PanelTitle>POWER ALLOCATION</PanelTitle>
             </PanelHeader>
             <PanelContent>
+              {/* Key gauges */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  paddingBottom: '1rem',
+                  marginBottom: '1rem',
+                  borderBottom: '1px solid var(--border)',
+                }}
+              >
+                <ProgressRing value={89} label="REACTOR"  variant="ACTIVE"   size={76} />
+                <ProgressRing value={94} label="DOCKING"  variant="ACTIVE"   size={76} />
+                <ProgressRing value={43} label="DEFLECTOR" variant="WARNING" size={76} />
+              </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
                 <Progress value={89} label="FUSION REACTOR" />
                 <Progress value={76} label="HABITAT LIFE SUPPORT" />
@@ -730,13 +764,14 @@ export default function SciFiShowcase() {
       {/* ── COMMAND FOOTER ── */}
       <footer
         style={{
-          height: '52px',
+          minHeight: '52px',
           background: 'var(--surface)',
           borderTop: '1px solid var(--border)',
           display: 'flex',
           alignItems: 'center',
-          padding: '0 1.25rem',
-          gap: '0.625rem',
+          flexWrap: 'wrap',
+          padding: '0.5rem 1.25rem',
+          gap: '0.5rem',
           position: 'sticky',
           bottom: 0,
           zIndex: 50,

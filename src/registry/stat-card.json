@@ -1,0 +1,11 @@
+{
+  "name": "stat-card",
+  "description": "Metric tile with value, label, delta indicator, and status variants for dashboards.",
+  "files": [
+    { "path": "src/ui/stat-card/stat-card.tsx", "type": "component" },
+    { "path": "src/ui/stat-card/index.ts",      "type": "barrel" }
+  ],
+  "dependencies": ["class-variance-authority"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}
