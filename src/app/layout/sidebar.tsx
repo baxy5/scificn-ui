@@ -10,6 +10,12 @@ const navSections = [
     ],
   },
   {
+    label: 'SHOWCASE',
+    items: [
+      { label: 'EXAMPLES', to: '/showcase' },
+    ],
+  },
+  {
     label: 'COMPONENTS',
     items: [
       { label: 'ALERT',     to: '/components/alert' },

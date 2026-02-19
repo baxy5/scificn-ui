@@ -22,6 +22,10 @@ const TabsPage         = lazy(() => import('./pages/components/tabs'))
 const TextareaPage     = lazy(() => import('./pages/components/textarea'))
 const ToastPage        = lazy(() => import('./pages/components/toast'))
 const TooltipPage      = lazy(() => import('./pages/components/tooltip'))
+const ShowcasePage     = lazy(() => import('./pages/showcase/index'))
+const StarWarsShowcase = lazy(() => import('./pages/showcase/star-wars'))
+const AlienShowcase    = lazy(() => import('./pages/showcase/alien'))
+const SciFiShowcase    = lazy(() => import('./pages/showcase/sci-fi'))
 
 function PageFallback() {
   return (
@@ -64,7 +68,11 @@ export function AppRouter() {
             <Route path="components/textarea"  element={<TextareaPage />} />
             <Route path="components/toast"     element={<ToastPage />} />
             <Route path="components/tooltip"   element={<TooltipPage />} />
+            <Route path="showcase"             element={<ShowcasePage />} />
           </Route>
+          <Route path="showcase/star-wars" element={<StarWarsShowcase />} />
+          <Route path="showcase/alien"     element={<AlienShowcase />} />
+          <Route path="showcase/sci-fi"    element={<SciFiShowcase />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
