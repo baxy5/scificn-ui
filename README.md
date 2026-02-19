@@ -6,6 +6,8 @@ A collection of 16 copy-paste components styled in a phosphor-screen terminal ae
 
 ---
 
+![Image](./public/scificn.png)
+
 ## Three Themes
 
 | Theme | Primary | Warning | Vibe |
