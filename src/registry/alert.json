@@ -1,0 +1,11 @@
+{
+  "name": "alert",
+  "description": "Alert panel with STATUS, WARNING, CRITICAL, and INFO variants.",
+  "files": [
+    { "path": "src/ui/alert/alert.tsx", "type": "component" },
+    { "path": "src/ui/alert/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["class-variance-authority"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

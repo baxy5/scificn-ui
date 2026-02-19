@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "Toggle switch built on Radix UI. Slides between off (amber) and on (green) states.",
+  "dependencies": [
+    "@radix-ui/react-switch",
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/switch/switch.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport * as SwitchPrimitive from '@radix-ui/react-switch'\nimport { cn } from '@/lib/utils'\n\nexport interface SwitchProps\n  extends React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root> {\n  label?: string\n}\n\nconst Switch = React.forwardRef<\n  React.ElementRef<typeof SwitchPrimitive.Root>,\n  SwitchProps\n>(({ className, label, id, ...props }, ref) => {\n  const switchId = id ?? label?.toLowerCase().replace(/\\s+/g, '-')\n\n  return (\n    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.625rem' }}>\n      <SwitchPrimitive.Root\n        ref={ref}\n        id={switchId}\n        className={cn(\n          'peer inline-flex items-center shrink-0',\n          'h-6 w-14',\n          'rounded-none',\n          'border border-[var(--border)]',\n          'bg-[var(--surface)]',\n          'cursor-pointer',\n          'focus-visible:outline-none',\n          'focus-visible:border-[var(--border-active)]',\n          'focus-visible:shadow-[var(--glow-green)]',\n          'disabled:cursor-not-allowed disabled:opacity-40',\n          'data-[state=checked]:border-[var(--color-green)]',\n          'data-[state=checked]:shadow-[var(--glow-green)]',\n          'transition-all duration-150',\n          'font-mono text-[0.6rem] tracking-widest',\n          'relative overflow-hidden',\n          className\n        )}\n        {...props}\n      >\n        {/* OFF label */}\n        <span\n          className=\"absolute left-1.5 select-none\"\n          style={{\n            color:         'var(--text-muted)',\n            letterSpacing: '0.04em',\n            fontSize:      '0.6rem',\n            transition:    'opacity 0.15s',\n          }}\n          aria-hidden=\"true\"\n        >\n          [OFF]\n        </span>\n\n        <SwitchPrimitive.Thumb asChild>\n          {/* Invisible thumb — state is conveyed via root styles + text */}\n          <span style={{ display: 'none' }} />\n        </SwitchPrimitive.Thumb>\n\n        {/* ON label — shows when checked via CSS */}\n        <span\n          className=\"absolute right-1.5 select-none peer-data-[state=unchecked]:opacity-0\"\n          style={{\n            color:         'var(--color-green)',\n            textShadow:    'var(--text-glow-green)',\n            letterSpacing: '0.04em',\n            fontSize:      '0.6rem',\n            transition:    'opacity 0.15s',\n          }}\n          aria-hidden=\"true\"\n        >\n          [ON]\n        </span>\n      </SwitchPrimitive.Root>\n\n      {label && (\n        <label\n          htmlFor={switchId}\n          style={{\n            fontSize:      '0.75rem',\n            color:         'var(--text-secondary)',\n            letterSpacing: '0.05em',\n            cursor:        'pointer',\n            userSelect:    'none',\n          }}\n        >\n          {label}\n        </label>\n      )}\n    </div>\n  )\n})\nSwitch.displayName = SwitchPrimitive.Root.displayName\n\nexport { Switch }\n"
+    }
+  ]
+}

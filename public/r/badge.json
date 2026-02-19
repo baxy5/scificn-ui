@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Status indicator badge with ACTIVE, SCANNING, WARNING, CRITICAL, and OFFLINE variants.",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/badge/badge.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport { cva, type VariantProps } from 'class-variance-authority'\nimport { cn } from '@/lib/utils'\n\nconst badgeVariants = cva(\n  [\n    'inline-flex items-center gap-1.5',\n    'px-2 py-0.5',\n    'text-[0.65rem] font-mono font-medium uppercase tracking-widest',\n    'border border-solid',\n    'rounded-none',\n    'whitespace-nowrap',\n  ],\n  {\n    variants: {\n      variant: {\n        ACTIVE: [\n          'border-[var(--color-green)]',\n          'text-[var(--color-green)]',\n        ],\n        OFFLINE: [\n          'border-[var(--border)]',\n          'text-[var(--text-muted)]',\n        ],\n        WARNING: [\n          'border-[var(--color-amber)]',\n          'text-[var(--color-amber)]',\n        ],\n        CRITICAL: [\n          'border-[var(--color-red)]',\n          'text-[var(--color-red)]',\n        ],\n        SCANNING: [\n          'border-[var(--color-green)]',\n          'text-[var(--color-green)]',\n        ],\n      },\n    },\n    defaultVariants: {\n      variant: 'ACTIVE',\n    },\n  }\n)\n\nexport interface BadgeProps\n  extends React.HTMLAttributes<HTMLSpanElement>,\n    VariantProps<typeof badgeVariants> {}\n\nfunction Badge({ className, variant, children, ...props }: BadgeProps) {\n  const isScanning = variant === 'SCANNING'\n\n  return (\n    <span\n      className={cn(badgeVariants({ variant }), className)}\n      style={\n        variant === 'ACTIVE'\n          ? { textShadow: 'var(--text-glow-green)', boxShadow: 'inset 0 0 8px #00ed3f11' }\n          : variant === 'CRITICAL'\n            ? { textShadow: 'var(--text-glow-red)', boxShadow: 'inset 0 0 8px #cc220011' }\n            : undefined\n      }\n      {...props}\n    >\n      {isScanning && (\n        <span\n          style={{\n            display: 'inline-block',\n            animation: 'blink-cursor 1s step-end infinite',\n          }}\n        >\n          ●\n        </span>\n      )}\n      {!isScanning && variant === 'ACTIVE'  && <span>●</span>}\n      {!isScanning && variant === 'OFFLINE' && <span>○</span>}\n      {!isScanning && variant === 'WARNING' && <span>⚠</span>}\n      {!isScanning && variant === 'CRITICAL' && <span>✕</span>}\n      {children}\n    </span>\n  )\n}\n\nexport { Badge, badgeVariants }\n"
+    }
+  ]
+}

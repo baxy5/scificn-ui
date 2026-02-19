@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "Text input with optional label, prefix symbol, and inline error message.",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/input/input.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  label?: string\n  error?: string\n  prefix?: string\n}\n\nconst Input = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, label, error, prefix, id, style, ...props }, ref) => {\n    const inputId = id ?? label?.toLowerCase().replace(/\\s+/g, '-')\n\n    return (\n      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', width: '100%' }}>\n        {label && (\n          <label\n            htmlFor={inputId}\n            style={{\n              fontSize:      '0.65rem',\n              color:         error ? 'var(--color-amber)' : 'var(--text-muted)',\n              letterSpacing: '0.12em',\n              textTransform: 'uppercase',\n            }}\n          >\n            {label}\n          </label>\n        )}\n\n        <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>\n          {prefix && (\n            <span\n              style={{\n                position:     'absolute',\n                left:         '0.625rem',\n                color:        'var(--text-muted)',\n                fontSize:     '0.8rem',\n                pointerEvents:'none',\n                userSelect:   'none',\n              }}\n            >\n              {prefix}\n            </span>\n          )}\n          <input\n            ref={ref}\n            id={inputId}\n            className={cn(\n              'w-full h-9 bg-[var(--surface)] font-mono text-[0.8rem]',\n              'border border-[var(--border)]',\n              'text-[var(--text-secondary)]',\n              'placeholder:text-[var(--text-muted)]',\n              'outline-none rounded-none',\n              'transition-all duration-150',\n              'focus:border-[var(--border-active)] focus:shadow-[var(--glow-green)]',\n              'disabled:opacity-40 disabled:cursor-not-allowed',\n              error && 'border-[var(--color-amber)] focus:shadow-[var(--glow-amber)]',\n              className\n            )}\n            style={{\n              padding: prefix ? '0 0.75rem 0 1.75rem' : '0 0.75rem',\n              caretColor: 'var(--color-green)',\n              ...style,\n            }}\n            {...props}\n          />\n        </div>\n\n        {error && (\n          <span\n            style={{\n              fontSize:      '0.65rem',\n              color:         'var(--color-amber)',\n              letterSpacing: '0.06em',\n            }}\n          >\n            ⚠ {error}\n          </span>\n        )}\n      </div>\n    )\n  }\n)\nInput.displayName = 'Input'\n\nexport { Input }\n"
+    }
+  ]
+}

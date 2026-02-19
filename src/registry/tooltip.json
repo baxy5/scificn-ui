@@ -1,0 +1,11 @@
+{
+  "name": "tooltip",
+  "description": "Accessible tooltip with no arrow, surface-raised background.",
+  "files": [
+    { "path": "src/ui/tooltip/tooltip.tsx", "type": "component" },
+    { "path": "src/ui/tooltip/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["@radix-ui/react-tooltip"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

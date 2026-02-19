@@ -1,0 +1,14 @@
+{
+  "name": "button",
+  "description": "Terminal-style action button with EXEC, GHOST, OUTLINE, and ABORT variants.",
+  "files": [
+    { "path": "src/ui/button/button.tsx", "type": "component" },
+    { "path": "src/ui/button/index.ts",   "type": "barrel" }
+  ],
+  "dependencies": [
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

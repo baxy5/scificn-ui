@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "title": "Progress",
+  "description": "Linear progress bar built on Radix UI. Green fill with optional label and percentage display.",
+  "dependencies": [
+    "@radix-ui/react-progress",
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/progress/progress.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport * as ProgressPrimitive from '@radix-ui/react-progress'\nimport { cn } from '@/lib/utils'\n\nexport interface ProgressProps\n  extends React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> {\n  showValue?: boolean\n  label?: string\n}\n\nconst Progress = React.forwardRef<\n  React.ElementRef<typeof ProgressPrimitive.Root>,\n  ProgressProps\n>(({ className, value = 0, showValue = true, label, ...props }, ref) => {\n  const pct     = Math.min(Math.max(value ?? 0, 0), 100)\n  const filled  = Math.round((pct / 100) * 20)\n  const empty   = 20 - filled\n  const barText = '='.repeat(filled) + ' '.repeat(empty)\n\n  return (\n    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', width: '100%' }}>\n      {label && (\n        <span\n          style={{\n            fontSize:      '0.65rem',\n            color:         'var(--text-muted)',\n            letterSpacing: '0.1em',\n            textTransform: 'uppercase',\n          }}\n        >\n          {label}\n        </span>\n      )}\n\n      <ProgressPrimitive.Root\n        ref={ref}\n        className={cn('relative w-full overflow-hidden rounded-none', className)}\n        value={value}\n        {...props}\n      >\n        {/* Bracket-style visual */}\n        <div\n          style={{\n            display:    'flex',\n            alignItems: 'center',\n            gap:        '0.25rem',\n            fontFamily: 'var(--font-mono)',\n            fontSize:   '0.75rem',\n            color:      'var(--color-green)',\n            textShadow: 'var(--text-glow-green)',\n          }}\n        >\n          <span style={{ color: 'var(--text-muted)' }}>[</span>\n          <span style={{ letterSpacing: '-0.05em', whiteSpace: 'pre' }}>{barText}</span>\n          <span style={{ color: 'var(--text-muted)' }}>]</span>\n          {showValue && (\n            <span style={{ color: 'var(--text-muted)', fontSize: '0.65rem', marginLeft: '0.25rem' }}>\n              {Math.round(pct)}%\n            </span>\n          )}\n        </div>\n\n        {/* Accessible indicator (visually hidden, only for Radix a11y) */}\n        <ProgressPrimitive.Indicator\n          style={{\n            position:  'absolute',\n            width:     '1px',\n            height:    '1px',\n            overflow:  'hidden',\n            clip:      'rect(0,0,0,0)',\n            transform: `translateX(-${100 - pct}%)`,\n          }}\n        />\n      </ProgressPrimitive.Root>\n    </div>\n  )\n})\nProgress.displayName = ProgressPrimitive.Root.displayName\n\nexport { Progress }\n"
+    }
+  ]
+}

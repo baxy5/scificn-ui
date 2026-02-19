@@ -1,0 +1,11 @@
+{
+  "name": "panel",
+  "description": "Container with corner notch via clip-path. Composable Panel, PanelHeader, PanelTitle, PanelContent, PanelFooter.",
+  "files": [
+    { "path": "src/ui/panel/panel.tsx", "type": "component" },
+    { "path": "src/ui/panel/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "checkbox",
+  "description": "Accessible checkbox with terminal-style filled square indicator.",
+  "files": [
+    { "path": "src/ui/checkbox/checkbox.tsx", "type": "component" },
+    { "path": "src/ui/checkbox/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["@radix-ui/react-checkbox"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "spinner",
+  "description": "ASCII-style rotating spinner with optional label.",
+  "files": [
+    { "path": "src/ui/spinner/spinner.tsx", "type": "component" },
+    { "path": "src/ui/spinner/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

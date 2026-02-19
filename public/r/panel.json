@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "panel",
+  "type": "registry:ui",
+  "title": "Panel",
+  "description": "Container with optional corner-notch clip-path. Composes PanelHeader, PanelContent, and PanelFooter.",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/panel/panel.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport { cn } from '@/lib/utils'\n\n/* ── Panel (outer container) ── */\nexport interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {\n  notch?: 'sm' | 'md' | 'lg' | 'none'\n}\n\nconst Panel = React.forwardRef<HTMLDivElement, PanelProps>(\n  ({ className, notch = 'md', style, ...props }, ref) => {\n    const clipMap = {\n      sm:   'var(--clip-corner-sm)',\n      md:   'var(--clip-corner-md)',\n      lg:   'var(--clip-corner-lg)',\n      none: 'none',\n    }\n\n    return (\n      <div\n        ref={ref}\n        className={cn('rounded-none', className)}\n        style={{\n          background:  'var(--surface)',\n          border:      '1px solid var(--border)',\n          clipPath:    clipMap[notch],\n          overflow:    'hidden',\n          ...style,\n        }}\n        {...props}\n      />\n    )\n  }\n)\nPanel.displayName = 'Panel'\n\n/* ── PanelHeader ── */\nconst PanelHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\n  ({ className, style, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(className)}\n      style={{\n        display:      'flex',\n        alignItems:   'center',\n        padding:      '0.6rem 1rem',\n        borderBottom: '1px solid var(--border)',\n        background:   'var(--surface-raised)',\n        gap:          '0.5rem',\n        ...style,\n      }}\n      {...props}\n    />\n  )\n)\nPanelHeader.displayName = 'PanelHeader'\n\n/* ── PanelTitle ── */\nconst PanelTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(\n  ({ className, style, ...props }, ref) => (\n    <h3\n      ref={ref}\n      className={cn(className)}\n      style={{\n        fontSize:      '0.7rem',\n        fontWeight:    600,\n        color:         'var(--text-muted)',\n        letterSpacing: '0.12em',\n        textTransform: 'uppercase',\n        margin:        0,\n        ...style,\n      }}\n      {...props}\n    />\n  )\n)\nPanelTitle.displayName = 'PanelTitle'\n\n/* ── PanelContent ── */\nconst PanelContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\n  ({ className, style, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(className)}\n      style={{ padding: '1rem', ...style }}\n      {...props}\n    />\n  )\n)\nPanelContent.displayName = 'PanelContent'\n\n/* ── PanelFooter ── */\nconst PanelFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\n  ({ className, style, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(className)}\n      style={{\n        display:    'flex',\n        alignItems: 'center',\n        padding:    '0.6rem 1rem',\n        borderTop:  '1px solid var(--border)',\n        background: 'var(--surface-raised)',\n        gap:        '0.5rem',\n        ...style,\n      }}\n      {...props}\n    />\n  )\n)\nPanelFooter.displayName = 'PanelFooter'\n\nexport { Panel, PanelHeader, PanelTitle, PanelContent, PanelFooter }\n"
+    }
+  ]
+}

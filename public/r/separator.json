@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "Horizontal or vertical rule with optional centered label.",
+  "dependencies": [
+    "@radix-ui/react-separator",
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/separator/separator.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport * as SeparatorPrimitive from '@radix-ui/react-separator'\nimport { cn } from '@/lib/utils'\n\nexport interface SeparatorProps\n  extends React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root> {\n  label?: string\n}\n\nconst Separator = React.forwardRef<\n  React.ElementRef<typeof SeparatorPrimitive.Root>,\n  SeparatorProps\n>(\n  (\n    { className, orientation = 'horizontal', decorative = true, label, style, ...props },\n    ref\n  ) => {\n    if (label && orientation === 'horizontal') {\n      return (\n        <div\n          style={{\n            display:    'flex',\n            alignItems: 'center',\n            gap:        '0.75rem',\n            width:      '100%',\n            ...style,\n          }}\n        >\n          <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />\n          <span\n            style={{\n              fontSize:      '0.6rem',\n              color:         'var(--text-muted)',\n              letterSpacing: '0.12em',\n              whiteSpace:    'nowrap',\n              textTransform: 'uppercase',\n            }}\n          >\n            {label}\n          </span>\n          <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />\n        </div>\n      )\n    }\n\n    return (\n      <SeparatorPrimitive.Root\n        ref={ref}\n        decorative={decorative}\n        orientation={orientation}\n        className={cn(\n          'shrink-0 rounded-none',\n          orientation === 'horizontal'\n            ? 'h-px w-full'\n            : 'h-full w-px',\n          className\n        )}\n        style={{\n          background: 'var(--border)',\n          ...style,\n        }}\n        {...props}\n      />\n    )\n  }\n)\nSeparator.displayName = SeparatorPrimitive.Root.displayName\n\nexport { Separator }\n"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "separator",
+  "description": "Horizontal or vertical divider with optional centered label.",
+  "files": [
+    { "path": "src/ui/separator/separator.tsx", "type": "component" },
+    { "path": "src/ui/separator/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["@radix-ui/react-separator"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "type": "registry:ui",
+  "title": "Spinner",
+  "description": "Animated loading indicator with SM, MD, and LG sizes. Optional text label.",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/spinner/spinner.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport { cn } from '@/lib/utils'\n\nconst frames = ['|', '/', '-', '\\\\'] as const\nconst sizeMap = { SM: '0.75rem', MD: '0.875rem', LG: '1rem' }\n\nexport interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {\n  size?: 'SM' | 'MD' | 'LG'\n  label?: string\n}\n\nfunction Spinner({ className, size = 'MD', label, style, ...props }: SpinnerProps) {\n  const [frame, setFrame] = React.useState(0)\n\n  React.useEffect(() => {\n    const id = setInterval(() => setFrame((f) => (f + 1) % frames.length), 120)\n    return () => clearInterval(id)\n  }, [])\n\n  return (\n    <span\n      className={cn('inline-flex items-center gap-1.5 font-mono', className)}\n      style={{ fontSize: sizeMap[size], color: 'var(--color-green)', ...style }}\n      aria-label={label ?? 'Loading'}\n      role=\"status\"\n      {...props}\n    >\n      <span\n        style={{\n          display:     'inline-block',\n          width:       '1ch',\n          textAlign:   'center',\n          textShadow:  'var(--text-glow-green)',\n          userSelect:  'none',\n        }}\n        aria-hidden=\"true\"\n      >\n        {frames[frame]}\n      </span>\n      {label && (\n        <span\n          style={{\n            letterSpacing: '0.08em',\n            color:         'var(--text-muted)',\n            animation:     'blink-cursor 1.5s step-end infinite',\n          }}\n        >\n          {label}\n        </span>\n      )}\n    </span>\n  )\n}\n\nexport { Spinner }\n"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "progress",
+  "description": "Progress bar with bracket-style ASCII display [====    ] 58%.",
+  "files": [
+    { "path": "src/ui/progress/progress.tsx", "type": "component" },
+    { "path": "src/ui/progress/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["@radix-ui/react-progress"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

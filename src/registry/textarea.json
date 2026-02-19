@@ -1,0 +1,11 @@
+{
+  "name": "textarea",
+  "description": "Multi-line text input with label and error state.",
+  "files": [
+    { "path": "src/ui/textarea/textarea.tsx", "type": "component" },
+    { "path": "src/ui/textarea/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

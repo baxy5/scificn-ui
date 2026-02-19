@@ -1,0 +1,11 @@
+{
+  "name": "input",
+  "description": "Text input with label, error state, and optional prefix character.",
+  "files": [
+    { "path": "src/ui/input/input.tsx", "type": "component" },
+    { "path": "src/ui/input/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

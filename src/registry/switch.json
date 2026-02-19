@@ -1,0 +1,11 @@
+{
+  "name": "switch",
+  "description": "Toggle switch with ASCII bracket style [OFF]/[ON] display.",
+  "files": [
+    { "path": "src/ui/switch/switch.tsx", "type": "component" },
+    { "path": "src/ui/switch/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["@radix-ui/react-switch"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

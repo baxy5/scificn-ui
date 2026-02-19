@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "Toggle checkbox built on Radix UI. Green checked state with optional label.",
+  "dependencies": [
+    "@radix-ui/react-checkbox",
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ui/checkbox/checkbox.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport * as CheckboxPrimitive from '@radix-ui/react-checkbox'\nimport { cn } from '@/lib/utils'\n\nexport interface CheckboxProps\n  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {\n  label?: string\n}\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  CheckboxProps\n>(({ className, label, id, ...props }, ref) => {\n  const checkboxId = id ?? label?.toLowerCase().replace(/\\s+/g, '-')\n\n  return (\n    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>\n      <CheckboxPrimitive.Root\n        ref={ref}\n        id={checkboxId}\n        className={cn(\n          'peer h-4 w-4 shrink-0 rounded-none',\n          'border border-[var(--border)]',\n          'bg-[var(--surface)]',\n          'focus-visible:outline-none',\n          'focus-visible:border-[var(--border-active)]',\n          'focus-visible:shadow-[var(--glow-green)]',\n          'disabled:cursor-not-allowed disabled:opacity-40',\n          'data-[state=checked]:border-[var(--color-green)]',\n          'data-[state=checked]:bg-[var(--surface-raised)]',\n          'data-[state=checked]:shadow-[var(--glow-green)]',\n          'transition-all duration-150',\n          className\n        )}\n        {...props}\n      >\n        <CheckboxPrimitive.Indicator\n          style={{\n            display:        'flex',\n            alignItems:     'center',\n            justifyContent: 'center',\n            width:          '100%',\n            height:         '100%',\n          }}\n        >\n          <span\n            style={{\n              color:      'var(--color-green)',\n              fontSize:   '0.6rem',\n              lineHeight: 1,\n              textShadow: 'var(--text-glow-green)',\n              userSelect: 'none',\n            }}\n          >\n            ■\n          </span>\n        </CheckboxPrimitive.Indicator>\n      </CheckboxPrimitive.Root>\n\n      {label && (\n        <label\n          htmlFor={checkboxId}\n          style={{\n            fontSize:      '0.75rem',\n            color:         'var(--text-secondary)',\n            letterSpacing: '0.05em',\n            cursor:        'pointer',\n            userSelect:    'none',\n          }}\n        >\n          {label}\n        </label>\n      )}\n    </div>\n  )\n})\nCheckbox.displayName = CheckboxPrimitive.Root.displayName\n\nexport { Checkbox }\n"
+    }
+  ]
+}

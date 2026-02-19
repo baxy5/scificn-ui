@@ -1,0 +1,11 @@
+{
+  "name": "dialog",
+  "description": "Modal dialog with void overlay and corner notch content panel.",
+  "files": [
+    { "path": "src/ui/dialog/dialog.tsx", "type": "component" },
+    { "path": "src/ui/dialog/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["@radix-ui/react-dialog"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}
