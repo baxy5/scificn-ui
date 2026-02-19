@@ -2,7 +2,7 @@
 
 > Retro Sci-Fi / Cassette Futurism UI component library for React.
 
-A collection of 16 copy-paste components styled in a phosphor-screen terminal aesthetic. Dark backgrounds, green primary glows, monospace typography. Compatible with the **shadcn CLI** — install any component with one command.
+A collection of multiple copy-paste components styled in a phosphor-screen terminal aesthetic. Dark backgrounds, green primary glows, monospace typography. Compatible with the **shadcn CLI** — install any component with one command.
 
 ---
 
