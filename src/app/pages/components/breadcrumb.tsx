@@ -45,7 +45,7 @@ export function Example() {
   )
 }`
 
-export default function BreadcrumbPage() {
+export default function BreadcrumbDocPage() {
   return (
     <div>
       <PageHeader
