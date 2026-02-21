@@ -1,0 +1,11 @@
+{
+  "name": "typography",
+  "description": "Type scale components for headings, body text, and code display.",
+  "files": [
+    { "path": "src/ui/typography/typography.tsx", "type": "component" },
+    { "path": "src/ui/typography/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["class-variance-authority"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

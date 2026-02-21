@@ -1,0 +1,11 @@
+{
+  "name": "kbd",
+  "description": "Keyboard key display element styled as a terminal key cap.",
+  "files": [
+    { "path": "src/ui/kbd/kbd.tsx", "type": "component" },
+    { "path": "src/ui/kbd/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

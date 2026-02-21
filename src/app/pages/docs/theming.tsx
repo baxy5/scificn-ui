@@ -1,6 +1,7 @@
 import { PageHeader } from '@/app/components/docs/page-header'
 import { Section } from '@/app/components/docs/section'
 import { CodeBlock } from '@/app/components/docs/code-block'
+import { useNarrow } from '@/lib/use-narrow'
 
 const overrideExample = `/* In your own CSS, after importing globals.css */
 :root {
@@ -56,6 +57,7 @@ const palette: Array<{ name: string; value: string; role: string }> = [
 ]
 
 export default function Theming() {
+  const narrow = useNarrow()
   return (
     <div>
       <PageHeader
@@ -88,29 +90,32 @@ export default function Theming() {
             <div
               key={c.name}
               style={{
-                display:    'flex',
-                alignItems: 'center',
-                gap:        '0.75rem',
-                padding:    '0.4rem 0.6rem',
-                background: 'var(--surface)',
-                border:     '1px solid var(--border)',
+                display:       'flex',
+                flexDirection: narrow ? 'column' : 'row',
+                alignItems:    narrow ? 'flex-start' : 'center',
+                gap:           '0.75rem',
+                padding:       '0.4rem 0.6rem',
+                background:    'var(--surface)',
+                border:        '1px solid var(--border)',
               }}
             >
-              <div
-                style={{
-                  width:        '28px',
-                  height:       '28px',
-                  background:   c.value,
-                  border:       '1px solid var(--border)',
-                  flexShrink:   0,
-                }}
-              />
-              <code style={{ fontSize: '0.7rem', color: 'var(--color-green)', minWidth: '200px', flexShrink: 0 }}>
-                {c.name}
-              </code>
-              <code style={{ fontSize: '0.7rem', color: 'var(--color-amber)', minWidth: '80px', flexShrink: 0 }}>
-                {c.value}
-              </code>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div
+                  style={{
+                    width:      '28px',
+                    height:     '28px',
+                    background: c.value,
+                    border:     '1px solid var(--border)',
+                    flexShrink: 0,
+                  }}
+                />
+                <code style={{ fontSize: '0.7rem', color: 'var(--color-green)', ...(narrow ? {} : { minWidth: '200px', flexShrink: 0 }) }}>
+                  {c.name}
+                </code>
+                <code style={{ fontSize: '0.7rem', color: 'var(--color-amber)', ...(narrow ? {} : { minWidth: '80px', flexShrink: 0 }) }}>
+                  {c.value}
+                </code>
+              </div>
               <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{c.role}</span>
             </div>
           ))}

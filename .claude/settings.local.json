@@ -39,7 +39,8 @@
       "Bash(echo:*)",
       "Bash(test:*)",
       "Bash(node scripts/build-registry.mjs:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(npm install:*)"
     ]
   }
 }

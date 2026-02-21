@@ -4,6 +4,7 @@ import { Section } from '@/app/components/docs/section'
 import { ComponentPreview } from '@/app/components/docs/component-preview'
 import { CodeBlock } from '@/app/components/docs/code-block'
 import { PropsTable } from '@/app/components/docs/props-table'
+import { useNarrow } from '@/lib/use-narrow'
 
 const previewCode = `import { StatCard } from '@/ui/stat-card'
 
@@ -40,6 +41,7 @@ export function DashboardMetrics() {
 }`
 
 export default function StatCardPage() {
+  const narrow = useNarrow()
   return (
     <div>
       <PageHeader
@@ -51,7 +53,7 @@ export default function StatCardPage() {
         <ComponentPreview
           code={previewCode}
           preview={
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', width: '100%' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: narrow ? '1fr' : 'repeat(2, 1fr)', gap: '1rem', width: '100%' }}>
               <StatCard label="REACTOR OUTPUT" value="94.7%"  delta="+2.3%"  deltaPositive        sublabel="NOMINAL"   variant="ACTIVE"   />
               <StatCard label="HULL INTEGRITY" value="61%"    delta="-8.1%"  deltaPositive={false} sublabel="DEGRADED"  variant="WARNING"  />
               <StatCard label="CREW MANIFEST"  value="312"                                         sublabel="ALL ABOARD"                   />

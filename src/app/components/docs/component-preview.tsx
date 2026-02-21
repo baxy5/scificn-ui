@@ -48,7 +48,7 @@ export function ComponentPreview({ preview, code }: ComponentPreviewProps) {
       {activeTab === 'PREVIEW' ? (
         <div
           style={{
-            padding: '2.5rem',
+            padding: 'clamp(1rem, 5vw, 2.5rem)',
             background: 'var(--background)',
             display: 'flex',
             alignItems: 'center',

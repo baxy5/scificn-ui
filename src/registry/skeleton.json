@@ -1,0 +1,11 @@
+{
+  "name": "skeleton",
+  "description": "Loading placeholder block that animates with a pulsing glow.",
+  "files": [
+    { "path": "src/ui/skeleton/skeleton.tsx", "type": "component" },
+    { "path": "src/ui/skeleton/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

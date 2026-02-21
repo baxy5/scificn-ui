@@ -1,0 +1,11 @@
+{
+  "name": "card",
+  "description": "Surface container with header, content, and footer sections.",
+  "files": [
+    { "path": "src/ui/card/card.tsx", "type": "component" },
+    { "path": "src/ui/card/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

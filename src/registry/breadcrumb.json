@@ -1,0 +1,11 @@
+{
+  "name": "breadcrumb",
+  "description": "Navigation breadcrumb trail showing current location hierarchy.",
+  "files": [
+    { "path": "src/ui/breadcrumb/breadcrumb.tsx", "type": "component" },
+    { "path": "src/ui/breadcrumb/index.ts", "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

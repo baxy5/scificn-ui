@@ -1,7 +1,9 @@
 import { PageHeader } from '@/app/components/docs/page-header'
 import { Section } from '@/app/components/docs/section'
+import { useNarrow } from '@/lib/use-narrow'
 
 export default function Introduction() {
+  const narrow = useNarrow()
   return (
     <div>
       <PageHeader
@@ -40,9 +42,10 @@ export default function Introduction() {
             <div
               key={title}
               style={{
-                display:   'flex',
-                gap:       '1rem',
-                padding:   '0.6rem 0',
+                display:      'flex',
+                flexDirection: narrow ? 'column' : 'row',
+                gap:          '0.5rem',
+                padding:      '0.6rem 0',
                 borderBottom: '1px solid var(--border)',
               }}
             >
@@ -52,8 +55,7 @@ export default function Introduction() {
                   color:         'var(--color-green)',
                   letterSpacing: '0.08em',
                   whiteSpace:    'nowrap',
-                  minWidth:      '180px',
-                  flexShrink:    0,
+                  ...(narrow ? {} : { minWidth: '180px', flexShrink: 0 }),
                   paddingTop:    '2px',
                 }}
               >
@@ -86,8 +88,8 @@ export default function Introduction() {
             ['class-variance-authority',   'Type-safe variant system (CVA)'],
             ['clsx + tailwind-merge',      'Class merging utilities (cn())'],
           ].map(([pkg, desc]) => (
-            <div key={pkg} style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
-              <span style={{ fontSize: '0.75rem', color: 'var(--color-green)', minWidth: '220px', flexShrink: 0 }}>
+            <div key={pkg} style={{ display: 'flex', flexDirection: narrow ? 'column' : 'row', gap: narrow ? '0.25rem' : '1rem', alignItems: 'baseline' }}>
+              <span style={{ fontSize: '0.75rem', color: 'var(--color-green)', ...(narrow ? {} : { minWidth: '220px', flexShrink: 0 }) }}>
                 {pkg}
               </span>
               <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{desc}</span>

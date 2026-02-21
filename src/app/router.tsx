@@ -8,20 +8,26 @@ const InstallationPage = lazy(() => import('./pages/docs/installation'))
 const ThemingPage      = lazy(() => import('./pages/docs/theming'))
 const AlertPage        = lazy(() => import('./pages/components/alert'))
 const BadgePage        = lazy(() => import('./pages/components/badge'))
+const BreadcrumbPage   = lazy(() => import('./pages/components/breadcrumb'))
 const ButtonPage       = lazy(() => import('./pages/components/button'))
+const CardPage         = lazy(() => import('./pages/components/card'))
 const CheckboxPage     = lazy(() => import('./pages/components/checkbox'))
 const DialogPage       = lazy(() => import('./pages/components/dialog'))
 const InputPage        = lazy(() => import('./pages/components/input'))
+const KbdPage          = lazy(() => import('./pages/components/kbd'))
+const LabelPage        = lazy(() => import('./pages/components/label'))
 const PanelPage        = lazy(() => import('./pages/components/panel'))
 const ProgressPage     = lazy(() => import('./pages/components/progress'))
 const SelectPage       = lazy(() => import('./pages/components/select'))
 const SeparatorPage    = lazy(() => import('./pages/components/separator'))
+const SkeletonPage     = lazy(() => import('./pages/components/skeleton'))
 const SpinnerPage      = lazy(() => import('./pages/components/spinner'))
 const SwitchPage       = lazy(() => import('./pages/components/switch'))
 const TabsPage         = lazy(() => import('./pages/components/tabs'))
 const TextareaPage     = lazy(() => import('./pages/components/textarea'))
 const ToastPage        = lazy(() => import('./pages/components/toast'))
 const TooltipPage      = lazy(() => import('./pages/components/tooltip'))
+const TypographyPage   = lazy(() => import('./pages/components/typography'))
 const BarChartPage     = lazy(() => import('./pages/components/bar-chart'))
 const GridPage         = lazy(() => import('./pages/components/grid'))
 const HeatmapPage      = lazy(() => import('./pages/components/heatmap'))
@@ -60,21 +66,27 @@ export function AppRouter() {
             <Route path="docs/installation" element={<InstallationPage />} />
             <Route path="docs/theming"       element={<ThemingPage />} />
             <Route path="components/alert"     element={<AlertPage />} />
-            <Route path="components/badge"     element={<BadgePage />} />
+            <Route path="components/badge"      element={<BadgePage />} />
+            <Route path="components/breadcrumb" element={<BreadcrumbPage />} />
             <Route path="components/button"    element={<ButtonPage />} />
+            <Route path="components/card"      element={<CardPage />} />
             <Route path="components/checkbox"  element={<CheckboxPage />} />
             <Route path="components/dialog"    element={<DialogPage />} />
             <Route path="components/input"     element={<InputPage />} />
+            <Route path="components/kbd"       element={<KbdPage />} />
+            <Route path="components/label"     element={<LabelPage />} />
             <Route path="components/panel"     element={<PanelPage />} />
             <Route path="components/progress"  element={<ProgressPage />} />
             <Route path="components/select"    element={<SelectPage />} />
             <Route path="components/separator" element={<SeparatorPage />} />
+            <Route path="components/skeleton"  element={<SkeletonPage />} />
             <Route path="components/spinner"   element={<SpinnerPage />} />
             <Route path="components/switch"    element={<SwitchPage />} />
             <Route path="components/tabs"      element={<TabsPage />} />
             <Route path="components/textarea"  element={<TextareaPage />} />
             <Route path="components/toast"     element={<ToastPage />} />
-            <Route path="components/tooltip"       element={<TooltipPage />} />
+            <Route path="components/tooltip"    element={<TooltipPage />} />
+            <Route path="components/typography" element={<TypographyPage />} />
             <Route path="components/bar-chart"    element={<BarChartPage />} />
             <Route path="components/grid"         element={<GridPage />} />
             <Route path="components/heatmap"      element={<HeatmapPage />} />

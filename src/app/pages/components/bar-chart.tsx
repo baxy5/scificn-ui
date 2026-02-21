@@ -4,6 +4,7 @@ import { Section } from '@/app/components/docs/section'
 import { ComponentPreview } from '@/app/components/docs/component-preview'
 import { CodeBlock } from '@/app/components/docs/code-block'
 import { PropsTable } from '@/app/components/docs/props-table'
+import { useNarrow } from '@/lib/use-narrow'
 
 const horizontalData = [
   { label: 'REACTOR',  value: 87 },
@@ -51,6 +52,7 @@ const data: BarChartEntry[] = [
 <BarChart data={data} title="DAILY ACTIVITY" orientation="vertical" variant="WARNING" />`
 
 export default function BarChartPage() {
+  const narrow = useNarrow()
   return (
     <div>
       <PageHeader
@@ -84,7 +86,7 @@ export default function BarChartPage() {
       </Section>
 
       <Section title="ORIENTATIONS">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: narrow ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
           <div>
             <p style={{ marginBottom: '0.5rem', fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
               orientation=&quot;horizontal&quot;

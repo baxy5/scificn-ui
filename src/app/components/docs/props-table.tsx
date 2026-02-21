@@ -32,7 +32,7 @@ export function PropsTable({ rows }: PropsTableProps) {
 
   return (
     <div style={{ border: '1px solid var(--border)', overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--font-mono)' }}>
+      <table style={{ width: '100%', minWidth: '560px', borderCollapse: 'collapse', fontFamily: 'var(--font-mono)' }}>
         <thead>
           <tr>
             <th style={thStyle}>PROP</th>

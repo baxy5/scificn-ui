@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { useNarrow } from '@/lib/use-narrow'
 
 const navSections = [
   {
@@ -21,17 +22,22 @@ const navSections = [
       { label: 'ALERT',         to: '/components/alert' },
       { label: 'BADGE',         to: '/components/badge' },
       { label: 'BAR CHART',     to: '/components/bar-chart' },
+      { label: 'BREADCRUMB',    to: '/components/breadcrumb' },
       { label: 'BUTTON',        to: '/components/button' },
+      { label: 'CARD',          to: '/components/card' },
       { label: 'CHECKBOX',      to: '/components/checkbox' },
       { label: 'DIALOG',        to: '/components/dialog' },
       { label: 'GRID',          to: '/components/grid' },
       { label: 'HEATMAP',       to: '/components/heatmap' },
       { label: 'INPUT',         to: '/components/input' },
+      { label: 'KBD',           to: '/components/kbd' },
+      { label: 'LABEL',         to: '/components/label' },
       { label: 'PANEL',         to: '/components/panel' },
       { label: 'PROGRESS',      to: '/components/progress' },
       { label: 'PROGRESS RING', to: '/components/progress-ring' },
       { label: 'SELECT',        to: '/components/select' },
       { label: 'SEPARATOR',     to: '/components/separator' },
+      { label: 'SKELETON',      to: '/components/skeleton' },
       { label: 'SPINNER',       to: '/components/spinner' },
       { label: 'STAT CARD',     to: '/components/stat-card' },
       { label: 'STATUS GRID',   to: '/components/status-grid' },
@@ -41,11 +47,19 @@ const navSections = [
       { label: 'TEXTAREA',      to: '/components/textarea' },
       { label: 'TOAST',         to: '/components/toast' },
       { label: 'TOOLTIP',       to: '/components/tooltip' },
+      { label: 'TYPOGRAPHY',    to: '/components/typography' },
     ],
   },
 ]
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const isNarrow = useNarrow(768)
+
   return (
     <nav
       style={{
@@ -57,6 +71,17 @@ export function Sidebar() {
         flexShrink: 0,
         display: 'flex',
         flexDirection: 'column',
+        ...(isNarrow
+          ? {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              height: '100vh',
+              zIndex: 100,
+              transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+              transition: 'transform 0.25s ease',
+            }
+          : {}),
       }}
     >
       {/* Brand */}
@@ -69,26 +94,48 @@ export function Sidebar() {
           textDecoration: 'none',
         }}
       >
-        <div
-          style={{
-            color: 'var(--color-green)',
-            fontSize: '1rem',
-            fontWeight: 700,
-            letterSpacing: '0.05em',
-            textShadow: 'var(--text-glow-green)',
-          }}
-        >
-          SCIFICN/UI
-        </div>
-        <div
-          style={{
-            color: 'var(--text-muted)',
-            fontSize: '0.65rem',
-            marginTop: '2px',
-            letterSpacing: '0.08em',
-          }}
-        >
-          RETRO SCI-FI COMPONENTS
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <div
+              style={{
+                color: 'var(--color-green)',
+                fontSize: '1rem',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                textShadow: 'var(--text-glow-green)',
+              }}
+            >
+              SCIFICN/UI
+            </div>
+            <div
+              style={{
+                color: 'var(--text-muted)',
+                fontSize: '0.65rem',
+                marginTop: '2px',
+                letterSpacing: '0.08em',
+              }}
+            >
+              RETRO SCI-FI COMPONENTS
+            </div>
+          </div>
+          {isNarrow && (
+            <button
+              onClick={(e) => { e.preventDefault(); onClose() }}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--text-muted)',
+                cursor: 'pointer',
+                fontSize: '1rem',
+                fontFamily: 'var(--font-mono)',
+                padding: '0.25rem 0.5rem',
+                lineHeight: 1,
+              }}
+              aria-label="Close menu"
+            >
+              ✕
+            </button>
+          )}
         </div>
       </NavLink>
 
@@ -110,6 +157,7 @@ export function Sidebar() {
               <NavLink
                 key={item.to}
                 to={item.to}
+                onClick={isNarrow ? onClose : undefined}
                 style={({ isActive }) => ({
                   display: 'block',
                   padding: '0.3rem 1.25rem',

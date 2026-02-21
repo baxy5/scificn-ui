@@ -56,7 +56,12 @@ function GitHubIcon() {
   );
 }
 
-export function Topbar() {
+interface TopbarProps {
+  onMenuToggle: () => void
+  isNarrow: boolean
+}
+
+export function Topbar({ onMenuToggle, isNarrow }: TopbarProps) {
   const [theme, setTheme] = useTheme();
   const stars = useGitHubStars("baxy5/scificn-ui");
 
@@ -68,36 +73,61 @@ export function Topbar() {
         background: "var(--surface)",
         display: "flex",
         alignItems: "center",
-        padding: "0 1.5rem",
-        gap: "1rem",
+        padding: "0 1rem",
+        gap: "0.75rem",
         position: "sticky",
         top: 0,
         zIndex: 50,
         flexShrink: 0,
       }}
     >
-      {/* Left status */}
-      <span
-        style={{
-          color: "var(--text-muted)",
-          fontSize: "0.8rem",
-          letterSpacing: "0.08em",
-          flexShrink: 0,
-        }}
-      >
-        SYS:ONLINE
-      </span>
-      <span
-        style={{
-          color: "var(--color-green)",
-          fontSize: "0.8rem",
-          textShadow: "var(--text-glow-green)",
-          letterSpacing: "0.08em",
-          flexShrink: 0,
-        }}
-      >
-        ● ACTIVE
-      </span>
+      {/* Hamburger (mobile only) */}
+      {isNarrow && (
+        <button
+          onClick={onMenuToggle}
+          style={{
+            background: "transparent",
+            border: "none",
+            color: "var(--text-muted)",
+            cursor: "pointer",
+            fontSize: "1.1rem",
+            fontFamily: "var(--font-mono)",
+            padding: "0.25rem 0.5rem",
+            lineHeight: 1,
+            flexShrink: 0,
+          }}
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
+      )}
+
+      {/* Left status (desktop only) */}
+      {!isNarrow && (
+        <>
+          <span
+            style={{
+              color: "var(--text-muted)",
+              fontSize: "0.8rem",
+              letterSpacing: "0.08em",
+              flexShrink: 0,
+            }}
+          >
+            SYS:ONLINE
+          </span>
+          <span
+            style={{
+              color: "var(--color-green)",
+              fontSize: "0.8rem",
+              textShadow: "var(--text-glow-green)",
+              letterSpacing: "0.08em",
+              flexShrink: 0,
+            }}
+          >
+            ● ACTIVE
+          </span>
+        </>
+      )}
 
       {/* Spacer */}
       <div style={{ flex: 1 }} />
@@ -112,21 +142,23 @@ export function Topbar() {
           overflow: "hidden",
         }}
       >
-        <span
-          style={{
-            color: "var(--text-muted)",
-            fontSize: "0.8rem",
-            letterSpacing: "0.1em",
-            padding: "0 0.6rem",
-            borderRight: "1px solid var(--border)",
-            height: "26px",
-            display: "flex",
-            alignItems: "center",
-            flexShrink: 0,
-          }}
-        >
-          THEME
-        </span>
+        {!isNarrow && (
+          <span
+            style={{
+              color: "var(--text-muted)",
+              fontSize: "0.8rem",
+              letterSpacing: "0.1em",
+              padding: "0 0.6rem",
+              borderRight: "1px solid var(--border)",
+              height: "26px",
+              display: "flex",
+              alignItems: "center",
+              flexShrink: 0,
+            }}
+          >
+            THEME
+          </span>
+        )}
 
         {themes.map((t, i) => (
           <button
@@ -141,9 +173,9 @@ export function Topbar() {
               borderLeft: i === 0 ? "none" : "1px solid var(--border)",
               cursor: "pointer",
               fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
+              fontSize: isNarrow ? "0.65rem" : "0.75rem",
               letterSpacing: "0.06em",
-              padding: "0 0.75rem",
+              padding: isNarrow ? "0 0.5rem" : "0 0.75rem",
               height: "26px",
               color:
                 theme === t.id ? "var(--color-green)" : "var(--text-muted)",
@@ -195,64 +227,73 @@ export function Topbar() {
         }}
       >
         <GitHubIcon />
-        <span>GITHUB</span>
+        {!isNarrow && (
+          <>
+            <span>GITHUB</span>
+            <span
+              style={{
+                color: "var(--text-muted)",
+                borderLeft: "1px solid var(--border)",
+                paddingLeft: "0.4rem",
+                marginLeft: "0.1rem",
+              }}
+            >
+              ★ {stars !== null ? stars.toLocaleString() : "—"}
+            </span>
+          </>
+        )}
+      </a>
+
+      {/* Version (desktop only) */}
+      {!isNarrow && (
         <span
           style={{
             color: "var(--text-muted)",
-            borderLeft: "1px solid var(--border)",
-            paddingLeft: "0.4rem",
-            marginLeft: "0.1rem",
+            fontSize: "0.8rem",
+            letterSpacing: "0.08em",
+            flexShrink: 0,
           }}
         >
-          ★ {stars !== null ? stars.toLocaleString() : "—"}
+          v0.1.0
         </span>
-      </a>
+      )}
 
-      {/* Version */}
-      <span
-        style={{
-          color: "var(--text-muted)",
-          fontSize: "0.8rem",
-          letterSpacing: "0.08em",
-          flexShrink: 0,
-        }}
-      >
-        v0.1.0
-      </span>
-
-      <a href="https://x.com/bakszy5" target="_blank">
-        <div className="size-10">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-            <g
-              fill="none"
-              fillRule="evenodd"
-              stroke="none"
-              stroke-width="1"
-              transform="translate(112 112)"
-            >
-              <path
-                fill="#000"
-                d="M711.111 800H88.89C39.8 800 0 760.2 0 711.111V88.89C0 39.8 39.8 0 88.889 0H711.11C760.2 0 800 39.8 800 88.889V711.11C800 760.2 760.2 800 711.111 800"
-              />
-              <path
-                fill="#FFF"
-                fillRule="nonzero"
-                d="M628 623H484.942L174 179h143.058zm-126.012-37.651h56.96L300.013 216.65h-56.96z"
-              />
-              <path
-                fill="#FFF"
-                fillRule="nonzero"
-                d="M219.296885 623 379 437.732409 358.114212 410 174 623z"
-              />
-              <path
-                fill="#FFF"
-                fillRule="nonzero"
-                d="M409 348.387347 429.212986 377 603 177 558.330417 177z"
-              />
-            </g>
-          </svg>
-        </div>
-      </a>
+      {/* X.com link (desktop only) */}
+      {!isNarrow && (
+        <a href="https://x.com/bakszy5" target="_blank">
+          <div className="size-10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+                transform="translate(112 112)"
+              >
+                <path
+                  fill="#000"
+                  d="M711.111 800H88.89C39.8 800 0 760.2 0 711.111V88.89C0 39.8 39.8 0 88.889 0H711.11C760.2 0 800 39.8 800 88.889V711.11C800 760.2 760.2 800 711.111 800"
+                />
+                <path
+                  fill="#FFF"
+                  fillRule="nonzero"
+                  d="M628 623H484.942L174 179h143.058zm-126.012-37.651h56.96L300.013 216.65h-56.96z"
+                />
+                <path
+                  fill="#FFF"
+                  fillRule="nonzero"
+                  d="M219.296885 623 379 437.732409 358.114212 410 174 623z"
+                />
+                <path
+                  fill="#FFF"
+                  fillRule="nonzero"
+                  d="M409 348.387347 429.212986 377 603 177 558.330417 177z"
+                />
+              </g>
+            </svg>
+          </div>
+        </a>
+      )}
     </header>
   );
 }

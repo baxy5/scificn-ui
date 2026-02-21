@@ -1,0 +1,11 @@
+{
+  "name": "label",
+  "description": "Accessible form label using Radix UI Label primitive.",
+  "files": [
+    { "path": "src/ui/label/label.tsx", "type": "component" },
+    { "path": "src/ui/label/index.ts", "type": "barrel" }
+  ],
+  "dependencies": ["@radix-ui/react-label"],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}
