@@ -1,3 +1,7 @@
+import { useLocation } from 'react-router-dom'
+
+const BASE = 'https://www.scificn.dev'
+
 interface PageHeaderProps {
   title: string
   description: string
@@ -5,8 +9,21 @@ interface PageHeaderProps {
 }
 
 export function PageHeader({ title, description, dependencies }: PageHeaderProps) {
+  const { pathname } = useLocation()
+  const pageTitle = `${title} — scificn-ui`
+
   return (
-    <div
+    <>
+      <title>{pageTitle}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={`${BASE}${pathname}`} />
+      <meta property="twitter:title" content={pageTitle} />
+      <meta property="twitter:description" content={description} />
+      <link rel="canonical" href={`${BASE}${pathname}`} />
+
+      <div
       style={{
         marginBottom: '2.5rem',
         paddingBottom: '1.5rem',
@@ -56,5 +73,6 @@ export function PageHeader({ title, description, dependencies }: PageHeaderProps
         </div>
       )}
     </div>
+    </>
   )
 }

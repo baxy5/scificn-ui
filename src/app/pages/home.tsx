@@ -49,7 +49,16 @@ const componentList = [
 
 export default function Home() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
+    <>
+      <title>scificn-ui | Retro Sci-Fi React UI Components</title>
+      <meta name="description" content="A copy-paste retro sci-fi React component library. Cassette Futurism design system with phosphor glow, corner notches, and terminal aesthetics. Built on Radix UI and Tailwind CSS v4." />
+      <meta property="og:title" content="scificn-ui | Retro Sci-Fi React UI Components" />
+      <meta property="og:description" content="A copy-paste retro sci-fi React component library. Cassette Futurism design system with phosphor glow, corner notches, and terminal aesthetics. Built on Radix UI and Tailwind CSS v4." />
+      <meta property="og:url" content="https://www.scificn.dev/" />
+      <meta property="twitter:title" content="scificn-ui | Retro Sci-Fi React UI Components" />
+      <meta property="twitter:description" content="A copy-paste retro sci-fi React component library. Cassette Futurism design system with phosphor glow, corner notches, and terminal aesthetics. Built on Radix UI and Tailwind CSS v4." />
+      <link rel="canonical" href="https://www.scificn.dev/" />
+      <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
       {/* Hero */}
       <section style={{ paddingTop: "1rem" }}>
         <div
@@ -313,5 +322,6 @@ import { Button } from '@/ui/button'
         </div>
       </section>
     </div>
+    </>
   );
 }

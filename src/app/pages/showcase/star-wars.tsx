@@ -128,7 +128,16 @@ export default function StarWarsShowcase() {
   }, [])
 
   return (
-    <div
+    <>
+      <title>Star Wars Theme — scificn-ui</title>
+      <meta name="description" content="Live demo of the Star Wars theme: blue hologram glow, Imperial Navy sector command terminal built with scificn-ui components." />
+      <meta property="og:title" content="Star Wars Theme — scificn-ui" />
+      <meta property="og:description" content="Live demo of the Star Wars theme: blue hologram glow, Imperial Navy sector command terminal built with scificn-ui components." />
+      <meta property="og:url" content="https://www.scificn.dev/showcase/star-wars" />
+      <meta property="twitter:title" content="Star Wars Theme — scificn-ui" />
+      <meta property="twitter:description" content="Live demo of the Star Wars theme: blue hologram glow, Imperial Navy sector command terminal built with scificn-ui components." />
+      <link rel="canonical" href="https://www.scificn.dev/showcase/star-wars" />
+      <div
       style={{
         minHeight: '100vh',
         background: 'var(--background)',
@@ -655,5 +664,6 @@ export default function StarWarsShowcase() {
         <Badge variant="ACTIVE">CHANNEL SECURE</Badge>
       </footer>
     </div>
+    </>
   )
 }

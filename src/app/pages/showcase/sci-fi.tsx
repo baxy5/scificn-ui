@@ -179,7 +179,16 @@ export default function SciFiShowcase() {
   const timeStr = new Date().toLocaleTimeString('en-GB', { hour12: false })
 
   return (
-    <div
+    <>
+      <title>Sci-Fi Theme — scificn-ui</title>
+      <meta name="description" content="Live demo of the default Sci-Fi theme: terminal green phosphor glow, deep space station operations interface built with scificn-ui components." />
+      <meta property="og:title" content="Sci-Fi Theme — scificn-ui" />
+      <meta property="og:description" content="Live demo of the default Sci-Fi theme: terminal green phosphor glow, deep space station operations interface built with scificn-ui components." />
+      <meta property="og:url" content="https://www.scificn.dev/showcase/sci-fi" />
+      <meta property="twitter:title" content="Sci-Fi Theme — scificn-ui" />
+      <meta property="twitter:description" content="Live demo of the default Sci-Fi theme: terminal green phosphor glow, deep space station operations interface built with scificn-ui components." />
+      <link rel="canonical" href="https://www.scificn.dev/showcase/sci-fi" />
+      <div
       style={{
         minHeight: '100vh',
         background: 'var(--background)',
@@ -813,5 +822,6 @@ export default function SciFiShowcase() {
         <Badge variant="ACTIVE">SYS ONLINE</Badge>
       </footer>
     </div>
+    </>
   )
 }

@@ -111,7 +111,16 @@ export default function AlienShowcase() {
   }
 
   return (
-    <div
+    <>
+      <title>Alien Theme — scificn-ui</title>
+      <meta name="description" content="Live demo of the Alien theme: bone palette, xenomorph bio-computer aesthetics — USCSS Nostromo crew terminal built with scificn-ui components." />
+      <meta property="og:title" content="Alien Theme — scificn-ui" />
+      <meta property="og:description" content="Live demo of the Alien theme: bone palette, xenomorph bio-computer aesthetics — USCSS Nostromo crew terminal built with scificn-ui components." />
+      <meta property="og:url" content="https://www.scificn.dev/showcase/alien" />
+      <meta property="twitter:title" content="Alien Theme — scificn-ui" />
+      <meta property="twitter:description" content="Live demo of the Alien theme: bone palette, xenomorph bio-computer aesthetics — USCSS Nostromo crew terminal built with scificn-ui components." />
+      <link rel="canonical" href="https://www.scificn.dev/showcase/alien" />
+      <div
       style={{
         minHeight: '100vh',
         background: 'var(--background)',
@@ -566,5 +575,6 @@ export default function AlienShowcase() {
         <Badge variant="CRITICAL">ALERT LEVEL: RED</Badge>
       </footer>
     </div>
+    </>
   )
 }
