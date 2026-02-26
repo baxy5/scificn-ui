@@ -12,7 +12,8 @@ const previewCode = `import { ProgressRing } from '@/ui/progress-ring'
 <ProgressRing value={23} label="HULL"    variant="CRITICAL" />
 <ProgressRing value={50} label="FUEL"    variant="DEFAULT" />`
 
-const installCode = `npm install clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/progress-ring`
+
 
 const usageCode = `import { ProgressRing } from '@/ui/progress-ring'
 
@@ -50,9 +51,6 @@ export default function ProgressRingPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/progress-ring/progress-ring.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

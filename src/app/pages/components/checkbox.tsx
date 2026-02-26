@@ -11,7 +11,8 @@ const previewCode = `import { Checkbox } from '@/ui/checkbox'
 <Checkbox label="SHIELD MATRIX" defaultChecked />
 <Checkbox label="OFFLINE SYSTEMS" disabled />`
 
-const installCode = `npm install @radix-ui/react-checkbox clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/checkbox`
+
 
 const usageCode = `import { Checkbox } from '@/ui/checkbox'
 
@@ -62,9 +63,6 @@ export default function CheckboxPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/checkbox/checkbox.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

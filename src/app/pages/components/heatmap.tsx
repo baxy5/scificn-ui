@@ -33,7 +33,8 @@ const data = Array.from({ length: 168 }, () => ({
   variant="GREEN"
 />`
 
-const installCode = `npm install clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/heatmap`
+
 
 const usageCode = `import { Heatmap, type HeatmapCell } from '@/ui/heatmap'
 
@@ -77,9 +78,6 @@ export default function HeatmapPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/heatmap/heatmap.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

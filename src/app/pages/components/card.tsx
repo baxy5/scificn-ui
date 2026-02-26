@@ -71,7 +71,7 @@ export default function CardPage() {
         />
       </Section>
       <Section title="INSTALLATION">
-        <CodeBlock code="npm install @scificn/ui" language="bash" />
+        <CodeBlock code="npx shadcn@latest add @scificn/card" language="bash" />
       </Section>
       <Section title="USAGE">
         <CodeBlock code={usageCode} />

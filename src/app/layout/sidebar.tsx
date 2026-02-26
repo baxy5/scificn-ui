@@ -13,7 +13,9 @@ const navSections = [
   {
     label: 'SHOWCASE',
     items: [
-      { label: 'EXAMPLES', to: '/showcase' },
+      { label: 'EXAMPLES',         to: '/showcase' },
+      { label: 'CHARTS',           to: '/showcase/charts' },
+      { label: 'MISSION CONTROL',  to: '/showcase/mission-control' },
     ],
   },
   {
@@ -32,9 +34,12 @@ const navSections = [
       { label: 'INPUT',         to: '/components/input' },
       { label: 'KBD',           to: '/components/kbd' },
       { label: 'LABEL',         to: '/components/label' },
+      { label: 'LINE CHART',    to: '/components/line-chart' },
+      { label: 'NODE GRAPH',    to: '/components/node-graph' },
       { label: 'PANEL',         to: '/components/panel' },
       { label: 'PROGRESS',      to: '/components/progress' },
       { label: 'PROGRESS RING', to: '/components/progress-ring' },
+      { label: 'RADAR CHART',   to: '/components/radar-chart' },
       { label: 'SELECT',        to: '/components/select' },
       { label: 'SEPARATOR',     to: '/components/separator' },
       { label: 'SKELETON',      to: '/components/skeleton' },

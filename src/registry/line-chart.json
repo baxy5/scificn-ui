@@ -1,0 +1,11 @@
+{
+  "name": "line-chart",
+  "description": "SVG line chart with multi-series support, animated draw-on, area fill, grid lines, and legend.",
+  "files": [
+    { "path": "src/ui/line-chart/line-chart.tsx", "type": "component" },
+    { "path": "src/ui/line-chart/index.ts",       "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}

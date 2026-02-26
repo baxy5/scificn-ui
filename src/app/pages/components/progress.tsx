@@ -11,7 +11,8 @@ const previewCode = `import { Progress } from '@/ui/progress'
 <Progress value={30} label="FUEL CELLS" />
 <Progress value={95} label="SHIELD MATRIX" />`
 
-const installCode = `npm install @radix-ui/react-progress clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/progress`
+
 
 const usageCode = `import { Progress } from '@/ui/progress'
 
@@ -48,9 +49,6 @@ export default function ProgressPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/progress/progress.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

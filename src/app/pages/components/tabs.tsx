@@ -18,7 +18,8 @@ const previewCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@
   <TabsContent value="comms">Communications log.</TabsContent>
 </Tabs>`
 
-const installCode = `npm install @radix-ui/react-tabs clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/tabs`
+
 
 const usageCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/ui/tabs'
 
@@ -80,9 +81,6 @@ export default function TabsPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/tabs/tabs.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

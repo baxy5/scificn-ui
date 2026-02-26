@@ -12,7 +12,8 @@ const previewCode = `import { Button } from '@/ui/button'
 <Button variant="GHOST">CANCEL</Button>
 <Button variant="ABORT">ABORT</Button>`
 
-const installCode = `npm install @radix-ui/react-slot class-variance-authority clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/button`
+
 
 const usageCode = `import { Button } from '@/ui/button'
 
@@ -61,11 +62,6 @@ export default function ButtonPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy{' '}
-          <span style={{ color: 'var(--color-green)' }}>src/ui/button/button.tsx</span>{' '}
-          into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

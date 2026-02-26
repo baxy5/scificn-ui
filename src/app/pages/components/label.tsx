@@ -40,7 +40,7 @@ export default function LabelPage() {
         />
       </Section>
       <Section title="INSTALLATION">
-        <CodeBlock code="npm install @scificn/ui" language="bash" />
+        <CodeBlock code="npx shadcn@latest add @scificn/label" language="bash" />
       </Section>
       <Section title="USAGE">
         <CodeBlock code={usageCode} />

@@ -10,7 +10,8 @@ const previewCode = `import { Textarea } from '@/ui/textarea'
 <Textarea label="MISSION BRIEFING" placeholder="Enter mission details..." />
 <Textarea label="TRANSMISSION LOG" error="Message exceeds 512 byte limit." />`
 
-const installCode = `npm install clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/textarea`
+
 
 const usageCode = `import { Textarea } from '@/ui/textarea'
 
@@ -47,9 +48,6 @@ export default function TextareaPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/textarea/textarea.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

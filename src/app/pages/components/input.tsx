@@ -11,7 +11,8 @@ const previewCode = `import { Input } from '@/ui/input'
 <Input label="COORDINATES" prefix=">" placeholder="00.0000, 00.0000" />
 <Input label="ACCESS CODE" error="Invalid authorization token." />`
 
-const installCode = `npm install clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/input`
+
 
 const usageCode = `import { Input } from '@/ui/input'
 
@@ -48,9 +49,6 @@ export default function InputPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/input/input.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

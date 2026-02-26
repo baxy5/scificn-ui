@@ -16,7 +16,8 @@ const previewCode = `import { Panel, PanelHeader, PanelTitle, PanelContent } fro
   </PanelContent>
 </Panel>`
 
-const installCode = `npm install clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/panel`
+
 
 const usageCode = `import { Panel, PanelHeader, PanelTitle, PanelContent, PanelFooter } from '@/ui/panel'
 
@@ -63,9 +64,6 @@ export default function PanelPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/panel/panel.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

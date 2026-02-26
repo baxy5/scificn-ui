@@ -13,7 +13,8 @@ const previewCode = `import { StatCard } from '@/ui/stat-card'
 <StatCard label="CREW MANIFEST" value="312" sublabel="ALL ABOARD" />
 <StatCard label="CORE TEMP" value="4820°K" delta="+320°K" deltaPositive={false} sublabel="CRITICAL" variant="CRITICAL" />`
 
-const installCode = `npm install class-variance-authority clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/stat-card`
+
 
 const usageCode = `import { StatCard } from '@/ui/stat-card'
 
@@ -65,9 +66,6 @@ export default function StatCardPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/stat-card/stat-card.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

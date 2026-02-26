@@ -24,7 +24,8 @@ const previewCode = `import {
   </SelectContent>
 </Select>`
 
-const installCode = `npm install @radix-ui/react-select clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/select`
+
 
 const usageCode = `import {
   Select, SelectTrigger, SelectValue,
@@ -84,9 +85,6 @@ export default function SelectPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/select/select.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

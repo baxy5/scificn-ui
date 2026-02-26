@@ -13,7 +13,8 @@ const previewCode = `import { Badge } from '@/ui/badge'
 <Badge variant="CRITICAL">CRITICAL</Badge>
 <Badge variant="OFFLINE">OFFLINE</Badge>`
 
-const installCode = `npm install class-variance-authority clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/badge`
+
 
 const usageCode = `import { Badge } from '@/ui/badge'
 
@@ -52,9 +53,6 @@ export default function BadgePage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/badge/badge.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

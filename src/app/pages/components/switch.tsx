@@ -11,7 +11,8 @@ const previewCode = `import { Switch } from '@/ui/switch'
 <Switch label="SHIELD MATRIX" defaultChecked />
 <Switch label="OFFLINE" disabled />`
 
-const installCode = `npm install @radix-ui/react-switch clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/switch`
+
 
 const usageCode = `import { Switch } from '@/ui/switch'
 
@@ -62,9 +63,6 @@ export default function SwitchPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/switch/switch.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

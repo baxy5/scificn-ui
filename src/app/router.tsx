@@ -29,16 +29,21 @@ const ToastPage        = lazy(() => import('./pages/components/toast'))
 const TooltipPage      = lazy(() => import('./pages/components/tooltip'))
 const TypographyPage   = lazy(() => import('./pages/components/typography'))
 const BarChartPage     = lazy(() => import('./pages/components/bar-chart'))
+const LineChartPage    = lazy(() => import('./pages/components/line-chart'))
+const RadarChartPage   = lazy(() => import('./pages/components/radar-chart'))
+const NodeGraphPage    = lazy(() => import('./pages/components/node-graph'))
 const GridPage         = lazy(() => import('./pages/components/grid'))
 const HeatmapPage      = lazy(() => import('./pages/components/heatmap'))
 const ProgressRingPage = lazy(() => import('./pages/components/progress-ring'))
 const StatCardPage     = lazy(() => import('./pages/components/stat-card'))
 const StatusGridPage   = lazy(() => import('./pages/components/status-grid'))
 const TerminalPage     = lazy(() => import('./pages/components/terminal'))
-const ShowcasePage     = lazy(() => import('./pages/showcase/index'))
-const StarWarsShowcase = lazy(() => import('./pages/showcase/star-wars'))
-const AlienShowcase    = lazy(() => import('./pages/showcase/alien'))
-const SciFiShowcase    = lazy(() => import('./pages/showcase/sci-fi'))
+const ShowcasePage        = lazy(() => import('./pages/showcase/index'))
+const StarWarsShowcase    = lazy(() => import('./pages/showcase/star-wars'))
+const AlienShowcase       = lazy(() => import('./pages/showcase/alien'))
+const SciFiShowcase       = lazy(() => import('./pages/showcase/sci-fi'))
+const MissionControlPage  = lazy(() => import('./pages/showcase/mission-control'))
+const ChartsShowcase      = lazy(() => import('./pages/showcase/charts'))
 
 function PageFallback() {
   return (
@@ -88,6 +93,9 @@ export function AppRouter() {
             <Route path="components/tooltip"    element={<TooltipPage />} />
             <Route path="components/typography" element={<TypographyPage />} />
             <Route path="components/bar-chart"    element={<BarChartPage />} />
+            <Route path="components/line-chart"   element={<LineChartPage />} />
+            <Route path="components/node-graph"   element={<NodeGraphPage />} />
+            <Route path="components/radar-chart"  element={<RadarChartPage />} />
             <Route path="components/grid"         element={<GridPage />} />
             <Route path="components/heatmap"      element={<HeatmapPage />} />
             <Route path="components/progress-ring" element={<ProgressRingPage />} />
@@ -96,9 +104,11 @@ export function AppRouter() {
             <Route path="components/terminal"     element={<TerminalPage />} />
             <Route path="showcase"               element={<ShowcasePage />} />
           </Route>
-          <Route path="showcase/star-wars" element={<StarWarsShowcase />} />
-          <Route path="showcase/alien"     element={<AlienShowcase />} />
-          <Route path="showcase/sci-fi"    element={<SciFiShowcase />} />
+          <Route path="showcase/star-wars"        element={<StarWarsShowcase />} />
+          <Route path="showcase/alien"            element={<AlienShowcase />} />
+          <Route path="showcase/sci-fi"           element={<SciFiShowcase />} />
+          <Route path="showcase/mission-control"  element={<MissionControlPage />} />
+          <Route path="showcase/charts"           element={<ChartsShowcase />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

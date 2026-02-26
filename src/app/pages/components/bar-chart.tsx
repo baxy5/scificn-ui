@@ -35,7 +35,8 @@ const systems = [
 
 <BarChart data={systems} title="SYSTEM LOAD" orientation="horizontal" />`
 
-const installCode = `npm install clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/bar-chart`
+
 
 const usageCode = `import { BarChart, type BarChartEntry } from '@/ui/bar-chart'
 
@@ -76,9 +77,6 @@ export default function BarChartPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/bar-chart/bar-chart.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

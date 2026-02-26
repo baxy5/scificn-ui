@@ -12,7 +12,8 @@ const previewCode = `import { Alert, AlertTitle, AlertDescription } from '@/ui/a
   <AlertDescription>All subsystems operating within normal parameters.</AlertDescription>
 </Alert>`
 
-const installCode = `npm install class-variance-authority clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/alert`
+
 
 const usageCode = `import { Alert, AlertTitle, AlertDescription } from '@/ui/alert'
 
@@ -51,9 +52,6 @@ export default function AlertPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/alert/alert.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

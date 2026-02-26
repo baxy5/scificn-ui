@@ -35,7 +35,8 @@ function Example() {
   )
 }`
 
-const installCode = `npm install @radix-ui/react-toast clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/toast`
+
 
 const hookUsageCode = `import { useToast } from '@/ui/toast/use-toast'
 

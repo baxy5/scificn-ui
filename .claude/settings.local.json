@@ -40,7 +40,9 @@
       "Bash(test:*)",
       "Bash(node scripts/build-registry.mjs:*)",
       "Bash(node -e:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "WebFetch(domain:www.8bitcn.com)",
+      "Bash(npx vite:*)"
     ]
   }
 }

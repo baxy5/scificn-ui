@@ -36,7 +36,8 @@ import { StatCard } from '@/ui/stat-card'
   <StatCard label="CORE TEMP"      value="4820°K" variant="CRITICAL" sublabel="CRITICAL" />
 </Grid>`
 
-const installCode = `npm install clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/grid`
+
 
 const usageCode = `import { Grid } from '@/ui/grid'
 
@@ -82,9 +83,6 @@ export default function GridPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/grid/grid.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

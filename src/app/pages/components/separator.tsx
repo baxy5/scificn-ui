@@ -11,7 +11,8 @@ const previewCode = `import { Separator } from '@/ui/separator'
 <Separator label="SECTION" />
 <Separator orientation="vertical" style={{ height: '32px' }} />`
 
-const installCode = `npm install @radix-ui/react-separator clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/separator`
+
 
 const usageCode = `import { Separator } from '@/ui/separator'
 
@@ -53,9 +54,6 @@ export default function SeparatorPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/separator/separator.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

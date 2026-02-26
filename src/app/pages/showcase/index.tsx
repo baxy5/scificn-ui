@@ -4,6 +4,26 @@ import { Section } from '@/app/components/docs/section'
 
 const showcases = [
   {
+    id: 'charts',
+    title: 'SECTOR ANALYTICS CONSOLE',
+    theme: 'CHARTS',
+    themeColor: '#6DC3BB',
+    description:
+      'Deep space sensor array analytics dashboard. Showcases every chart component — LineChart, BarChart, RadarChart, NodeGraph, Heatmap, and ProgressRing — with live-jittered synthetic sensor data.',
+    components: ['LineChart', 'BarChart', 'RadarChart', 'NodeGraph', 'Heatmap', 'ProgressRing', 'StatCard', 'Panel', 'Tabs', 'Badge'],
+    path: '/showcase/charts',
+  },
+  {
+    id: 'mission-control',
+    title: 'EARTH ORBIT COMMAND',
+    theme: 'LIVE DATA',
+    themeColor: '#6DC3BB',
+    description:
+      'Real-time space mission control dashboard. ISS position updates live every 5 seconds. SpaceX launch history, upcoming missions, and crew manifest pulled from open APIs.',
+    components: ['Panel', 'Badge', 'StatCard', 'Terminal', 'StatusGrid', 'ProgressRing', 'BarChart', 'Tabs', 'Alert'],
+    path: '/showcase/mission-control',
+  },
+  {
     id: 'star-wars',
     title: 'IMPERIAL COMMAND INTERFACE',
     theme: 'STAR WARS',

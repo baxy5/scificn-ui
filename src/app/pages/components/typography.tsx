@@ -43,7 +43,7 @@ export default function TypographyPage() {
         />
       </Section>
       <Section title="INSTALLATION">
-        <CodeBlock code="npm install @scificn/ui" language="bash" />
+        <CodeBlock code="npx shadcn@latest add @scificn/typography" language="bash" />
       </Section>
       <Section title="USAGE">
         <CodeBlock code={usageCode} />

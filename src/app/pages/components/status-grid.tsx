@@ -31,7 +31,8 @@ const systems: SystemEntry[] = [
 
 <StatusGrid systems={systems} title="SHIP SYSTEMS" columns={2} />`
 
-const installCode = `npm install clsx tailwind-merge`
+const installCode = `npx shadcn@latest add @scificn/status-grid`
+
 
 const usageCode = `import { StatusGrid, type SystemEntry } from '@/ui/status-grid'
 
@@ -72,9 +73,6 @@ export default function StatusGridPage() {
 
       <Section title="INSTALLATION">
         <CodeBlock code={installCode} language="bash" />
-        <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Then copy <span style={{ color: 'var(--color-green)' }}>src/ui/status-grid/status-grid.tsx</span> into your project.
-        </p>
       </Section>
 
       <Section title="USAGE">

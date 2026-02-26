@@ -1,3 +1,6 @@
+import lineChart   from './line-chart.json'
+import radarChart  from './radar-chart.json'
+import nodeGraph   from './node-graph.json'
 import utils        from './utils.json'
 import alert        from './alert.json'
 import badge        from './badge.json'
@@ -31,6 +34,9 @@ import typography   from './typography.json'
 
 export const registry = [
   utils,
+  lineChart,
+  radarChart,
+  nodeGraph,
   alert,
   badge,
   barChart,

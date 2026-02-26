@@ -1,0 +1,11 @@
+{
+  "name": "radar-chart",
+  "description": "SVG radar/spider chart with configurable axes, animated fade-in, grid polygons, and four color variants.",
+  "files": [
+    { "path": "src/ui/radar-chart/radar-chart.tsx", "type": "component" },
+    { "path": "src/ui/radar-chart/index.ts",        "type": "barrel" }
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": ["utils"]
+}
