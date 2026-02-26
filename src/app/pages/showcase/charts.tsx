@@ -75,7 +75,7 @@ interface ThemeData {
   timeStatValues: [string, string, string]
   // Network
   networkTitle: string
-  networkNodes: { id: string; label: string; x: number; y: number; status: 'ACTIVE' | 'OFFLINE' | 'WARNING' | 'CRITICAL' | 'NEUTRAL' | 'SCANNING'; sublabel?: string }[]
+  networkNodes: { id: string; label: string; x: number; y: number; status: 'ACTIVE' | 'OFFLINE' | 'WARNING' | 'CRITICAL' | 'NEUTRAL'; sublabel?: string }[]
   networkEdges: { from: string; to: string; animated?: boolean; label?: string }[]
   // Heatmap
   heatmapTitle: string
