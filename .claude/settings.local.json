@@ -42,7 +42,18 @@
       "Bash(node -e:*)",
       "Bash(npm install:*)",
       "WebFetch(domain:www.8bitcn.com)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(rm:*)",
+      "Bash(pkill:*)",
+      "Bash(netstat:*)",
+      "Bash(curl:*)",
+      "Bash(taskkill:*)",
+      "Bash(cmd:*)",
+      "Bash(powershell:*)",
+      "Bash(grep:*)",
+      "Bash(npm run:*)"
     ]
   }
 }

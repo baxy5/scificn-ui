@@ -1,0 +1,114 @@
+import type { Metadata } from 'next'
+import { Switch } from '@/ui/switch'
+import { PageHeader } from '@/app/_components/docs/page-header'
+import { Section } from '@/app/_components/docs/section'
+import { ComponentPreview } from '@/app/_components/docs/component-preview'
+import { CodeBlock } from '@/app/_components/docs/code-block'
+import { PropsTable } from '@/app/_components/docs/props-table'
+
+export const metadata: Metadata = {
+  title: 'SWITCH',
+  description: 'Binary toggle built on Radix UI. Displays [OFF] / [ON] text labels instead of a sliding thumb. Green glow on checked state.',
+  alternates: { canonical: '/components/switch' },
+}
+
+const previewCode = `import { Switch } from '@/ui/switch'
+
+<Switch label="TARGETING SYSTEM" />
+<Switch label="SHIELD MATRIX" defaultChecked />
+<Switch label="OFFLINE" disabled />`
+
+const installCode = `npx shadcn@latest add @scificn/switch`
+
+
+const usageCode = `import { Switch } from '@/ui/switch'
+
+export function Example() {
+  return (
+    <Switch
+      label="AUTO-PILOT"
+      onCheckedChange={(checked) => console.log('auto-pilot:', checked)}
+    />
+  )
+}`
+
+const controlledCode = `import { useState } from 'react'
+import { Switch } from '@/ui/switch'
+
+export function Controlled() {
+  const [enabled, setEnabled] = useState(false)
+  return (
+    <Switch
+      label="WARP DRIVE"
+      checked={enabled}
+      onCheckedChange={setEnabled}
+    />
+  )
+}`
+
+export default function Page() {
+  return (
+    <div>
+      <PageHeader
+        title="SWITCH"
+        description="Binary toggle built on Radix UI. Displays [OFF] / [ON] text labels instead of a sliding thumb. Green glow on checked state."
+        dependencies={['@radix-ui/react-switch']}
+      />
+
+      <Section title="PREVIEW">
+        <ComponentPreview
+          code={previewCode}
+          preview={
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <Switch label="TARGETING SYSTEM" />
+              <Switch label="SHIELD MATRIX" defaultChecked />
+              <Switch label="OFFLINE" disabled />
+            </div>
+          }
+        />
+      </Section>
+
+      <Section title="INSTALLATION">
+        <CodeBlock code={installCode} language="bash" />
+      </Section>
+
+      <Section title="USAGE">
+        <CodeBlock code={usageCode} />
+      </Section>
+
+      <Section title="STATES">
+        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          {[
+            { label: 'OFF',              checked: false, disabled: false },
+            { label: 'ON',               checked: true,  disabled: false },
+            { label: 'DISABLED OFF',     checked: false, disabled: true  },
+            { label: 'DISABLED ON',      checked: true,  disabled: true  },
+          ].map((state) => (
+            <div key={state.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+              <Switch defaultChecked={state.checked} disabled={state.disabled} />
+              <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)', letterSpacing: '0.06em' }}>
+                {state.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="CONTROLLED">
+        <CodeBlock code={controlledCode} />
+      </Section>
+
+      <Section title="PROPS">
+        <PropsTable
+          rows={[
+            { prop: 'label',          type: 'string',  defaultValue: '—',     description: 'Optional text label next to the switch. Auto-generates the id/htmlFor binding.' },
+            { prop: 'checked',        type: 'boolean', defaultValue: '—',     description: 'Controlled checked state.' },
+            { prop: 'defaultChecked', type: 'boolean', defaultValue: 'false', description: 'Initial state (uncontrolled).' },
+            { prop: 'onCheckedChange',type: '(checked: boolean) => void', defaultValue: '—', description: 'Callback fired on state change.' },
+            { prop: 'disabled',       type: 'boolean', defaultValue: 'false', description: 'Disables the switch and reduces opacity.' },
+          ]}
+        />
+      </Section>
+    </div>
+  )
+}

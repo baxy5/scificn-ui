@@ -1,0 +1,104 @@
+import type { Metadata } from 'next'
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/ui/breadcrumb'
+import { PageHeader } from '@/app/_components/docs/page-header'
+import { Section } from '@/app/_components/docs/section'
+import { ComponentPreview } from '@/app/_components/docs/component-preview'
+import { CodeBlock } from '@/app/_components/docs/code-block'
+import { PropsTable } from '@/app/_components/docs/props-table'
+
+export const metadata: Metadata = {
+  title: 'BREADCRUMB',
+  description: 'Navigation breadcrumb trail showing current location hierarchy.',
+  alternates: { canonical: '/components/breadcrumb' },
+}
+
+const previewCode = `<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">HOME</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="#">SYSTEMS</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>REACTOR</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`
+
+const usageCode = `import {
+  Breadcrumb, BreadcrumbList, BreadcrumbItem,
+  BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator
+} from '@scificn/ui'
+
+export function Example() {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem><BreadcrumbLink href="/">HOME</BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem><BreadcrumbPage>CURRENT</BreadcrumbPage></BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  )
+}`
+
+export default function Page() {
+  return (
+    <div>
+      <PageHeader
+        title="BREADCRUMB"
+        description="Navigation breadcrumb trail showing current location hierarchy."
+      />
+      <Section title="PREVIEW">
+        <ComponentPreview
+          code={previewCode}
+          preview={
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#">HOME</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#">SYSTEMS</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>REACTOR</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          }
+        />
+      </Section>
+      <Section title="INSTALLATION">
+        <CodeBlock code="npx shadcn@latest add @scificn/breadcrumb" language="bash" />
+      </Section>
+      <Section title="USAGE">
+        <CodeBlock code={usageCode} />
+      </Section>
+      <Section title="PROPS">
+        <PropsTable
+          rows={[
+            { prop: 'Breadcrumb', type: 'nav element', defaultValue: '—', description: 'Root nav wrapper with aria-label="breadcrumb".' },
+            { prop: 'BreadcrumbList', type: 'ol element', defaultValue: '—', description: 'Ordered list of breadcrumb items.' },
+            { prop: 'BreadcrumbItem', type: 'li element', defaultValue: '—', description: 'Individual breadcrumb entry.' },
+            { prop: 'BreadcrumbLink', type: 'a element', defaultValue: '—', description: 'Clickable breadcrumb link.' },
+            { prop: 'BreadcrumbPage', type: 'span element', defaultValue: '—', description: 'Current page indicator (non-clickable).' },
+            { prop: 'BreadcrumbSeparator', type: 'li element', defaultValue: '">"', description: 'Separator between items. Children override the default ">" symbol.' },
+          ]}
+        />
+      </Section>
+    </div>
+  )
+}

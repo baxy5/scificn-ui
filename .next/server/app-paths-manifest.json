@@ -1,0 +1,6 @@
+{
+  "/(fullscreen)/showcase/charts/page": "app/(fullscreen)/showcase/charts/page.js",
+  "/(docs)/page": "app/(docs)/page.js",
+  "/(docs)/showcase/page": "app/(docs)/showcase/page.js",
+  "/(docs)/components/alert/page": "app/(docs)/components/alert/page.js"
+}
