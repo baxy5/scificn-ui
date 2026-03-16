@@ -129,7 +129,12 @@ const RadarChart = React.forwardRef<HTMLDivElement, RadarChartProps>(
           </div>
         )}
 
-        <svg width={size} height={size} style={{ display: 'block' }}>
+        <svg
+          width={size}
+          height={size}
+          viewBox={`-24 -24 ${size + 48} ${size + 48}`}
+          style={{ display: 'block' }}
+        >
           {/* Grid polygons */}
           {showGrid && [1 / 3, 2 / 3, 1].map((frac, gi) => (
             <polygon

@@ -703,9 +703,11 @@ export function ChartsContent() {
           </div>
 
           <Badge variant="ACTIVE">{cfg.badge1Label}</Badge>
-          <Badge variant={cfg.badge2Variant(anomalyCount)}>
-            {cfg.badge2Label(anomalyCount)}
-          </Badge>
+          {!narrow && (
+            <Badge variant={cfg.badge2Variant(anomalyCount)}>
+              {cfg.badge2Label(anomalyCount)}
+            </Badge>
+          )}
 
           <span style={{ color: 'var(--color-green)', fontSize: '0.65rem', letterSpacing: '0.1em', textShadow: 'var(--text-glow-green)', flexShrink: 0, opacity: tick % 2 === 0 ? 1 : 0.5, transition: 'opacity 0.3s' }}>
             {timeStr}
@@ -891,7 +893,7 @@ export function ChartsContent() {
               <Panel notch="sm">
                 <PanelHeader><PanelTitle>{cfg.rightChartTitle}</PanelTitle></PanelHeader>
                 <PanelContent style={{ padding: 0 }}>
-                  <BarChart data={cfg.annualData} orientation="vertical" variant="ACTIVE" title={cfg.annualTitle} style={{ width: '100%' }} />
+                  <BarChart data={cfg.annualData} orientation="vertical" variant="ACTIVE" style={{ width: '100%' }} />
                 </PanelContent>
               </Panel>
 

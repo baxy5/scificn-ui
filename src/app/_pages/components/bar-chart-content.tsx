@@ -90,13 +90,13 @@ export function BarChartContent() {
             <p style={{ marginBottom: '0.5rem', fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
               orientation=&quot;horizontal&quot;
             </p>
-            <BarChart data={horizontalData} title="SYSTEM LOAD" orientation="horizontal" />
+            <BarChart data={horizontalData} title="SYSTEM LOAD" orientation="horizontal" style={{ width: '100%' }} />
           </div>
           <div>
             <p style={{ marginBottom: '0.5rem', fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
               orientation=&quot;vertical&quot;
             </p>
-            <BarChart data={verticalData} title="WEEKLY UPTIME" orientation="vertical" />
+            <BarChart data={verticalData} title="WEEKLY UPTIME" orientation="vertical" style={{ width: '100%' }} />
           </div>
         </div>
       </Section>

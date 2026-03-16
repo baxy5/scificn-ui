@@ -235,16 +235,18 @@ export function SciFiContent() {
         >
           NEXUS STATION-7
         </span>
-        <span
-          style={{
-            color: 'var(--text-muted)',
-            fontSize: '0.75rem',
-            letterSpacing: '0.08em',
-            flexShrink: 0,
-          }}
-        >
-          // SECTOR ALPHA // OPERATIONS CONTROL
-        </span>
+        {!narrow && (
+          <span
+            style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.75rem',
+              letterSpacing: '0.08em',
+              flexShrink: 0,
+            }}
+          >
+            // SECTOR ALPHA // OPERATIONS CONTROL
+          </span>
+        )}
 
         <div style={{ flex: 1 }} />
 
@@ -432,7 +434,8 @@ export function SciFiContent() {
                     </Alert>
                   )}
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
+                  <div style={{ overflowX: 'auto' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem', minWidth: '480px' }}>
                     {/* Header row */}
                     <div
                       style={{
@@ -517,6 +520,7 @@ export function SciFiContent() {
                         </div>
                       </div>
                     ))}
+                  </div>
                   </div>
                 </TabsContent>
 

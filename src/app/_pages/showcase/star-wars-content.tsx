@@ -187,16 +187,18 @@ export function StarWarsContent() {
         >
           IMPERIAL NAVY
         </span>
-        <span
-          style={{
-            color: 'var(--text-muted)',
-            fontSize: '0.75rem',
-            letterSpacing: '0.08em',
-            flexShrink: 0,
-          }}
-        >
-          // DS-1 ORBITAL // SECTOR-7G COMMAND
-        </span>
+        {!narrow && (
+          <span
+            style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.75rem',
+              letterSpacing: '0.08em',
+              flexShrink: 0,
+            }}
+          >
+            // DS-1 ORBITAL // SECTOR-7G COMMAND
+          </span>
+        )}
 
         <div style={{ flex: 1 }} />
 
@@ -432,7 +434,8 @@ export function StarWarsContent() {
 
                 {/* MANIFEST TAB */}
                 <TabsContent value="manifest" style={{ margin: 0, padding: '1rem' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
+                  <div style={{ overflowX: 'auto' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem', minWidth: '460px' }}>
                     {/* Header row */}
                     <div
                       style={{
@@ -490,6 +493,7 @@ export function StarWarsContent() {
                         </div>
                       </div>
                     ))}
+                  </div>
                   </div>
                 </TabsContent>
               </Tabs>

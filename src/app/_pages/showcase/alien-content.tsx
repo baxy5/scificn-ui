@@ -167,16 +167,18 @@ export function AlienContent() {
         >
           WEYLAND-YUTANI
         </span>
-        <span
-          style={{
-            color: 'var(--text-muted)',
-            fontSize: '0.75rem',
-            letterSpacing: '0.08em',
-            flexShrink: 0,
-          }}
-        >
-          // USCSS NOSTROMO // MU/TH/UR 6000
-        </span>
+        {!narrow && (
+          <span
+            style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.75rem',
+              letterSpacing: '0.08em',
+              flexShrink: 0,
+            }}
+          >
+            // USCSS NOSTROMO // MU/TH/UR 6000
+          </span>
+        )}
 
         <div style={{ flex: 1 }} />
 
@@ -371,7 +373,7 @@ export function AlienContent() {
                   <div
                     style={{
                       display: 'grid',
-                      gridTemplateColumns: '1fr 1fr',
+                      gridTemplateColumns: narrow ? '1fr' : '1fr 1fr',
                       gap: '1rem',
                       marginBottom: '1rem',
                     }}

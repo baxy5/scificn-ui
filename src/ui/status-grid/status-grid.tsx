@@ -91,18 +91,20 @@ const StatusGrid = React.forwardRef<HTMLDivElement, StatusGridProps>(
               <div
                 key={i}
                 style={{
-                  display:        'flex',
-                  alignItems:     'center',
-                  justifyContent: 'space-between',
-                  gap:            '0.75rem',
-                  padding:        '0.5rem 0.75rem',
-                  borderBottom:   isLastRow ? 'none' : '1px solid var(--border)',
-                  borderRight:    isLastCol ? 'none' : '1px solid var(--border)',
+                  display:             'grid',
+                  gridTemplateColumns: '1fr auto',
+                  alignItems:          'center',
+                  gap:                 '0.5rem',
+                  padding:             '0.5rem 0.75rem',
+                  borderBottom:        isLastRow ? 'none' : '1px solid var(--border)',
+                  borderRight:         isLastCol ? 'none' : '1px solid var(--border)',
+                  minWidth:            0,
                 }}
               >
                 {/* Name + optional detail */}
                 <span
                   style={{
+                    minWidth:     0,
                     fontSize:     '0.7rem',
                     color:        'var(--text-secondary)',
                     letterSpacing:'0.06em',
@@ -121,7 +123,7 @@ const StatusGrid = React.forwardRef<HTMLDivElement, StatusGridProps>(
                 </span>
 
                 {/* Status dot + label */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                   <span
                     style={{
                       display:      'inline-block',
