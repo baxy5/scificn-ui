@@ -3,11 +3,13 @@
   "name": "alert",
   "type": "registry:ui",
   "title": "Alert",
-  "description": "Inline alert block with STATUS, WARNING, CRITICAL, and INFO variants. Includes icon prefix.",
+  "description": "Alert panel with STATUS, WARNING, CRITICAL, and INFO variants.",
   "dependencies": [
-    "clsx"
+    "class-variance-authority"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/alert/alert.tsx",

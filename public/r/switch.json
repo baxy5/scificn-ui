@@ -3,12 +3,13 @@
   "name": "switch",
   "type": "registry:ui",
   "title": "Switch",
-  "description": "Toggle switch built on Radix UI. Slides between off (amber) and on (green) states.",
+  "description": "Toggle switch with ASCII bracket style [OFF]/[ON] display.",
   "dependencies": [
-    "@radix-ui/react-switch",
-    "clsx"
+    "@radix-ui/react-switch"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/switch/switch.tsx",

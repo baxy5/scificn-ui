@@ -3,12 +3,13 @@
   "name": "select",
   "type": "registry:ui",
   "title": "Select",
-  "description": "Dropdown selector built on Radix UI. Supports groups, labels, and separators.",
+  "description": "Accessible dropdown select with terminal styling.",
   "dependencies": [
-    "@radix-ui/react-select",
-    "clsx"
+    "@radix-ui/react-select"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/select/select.tsx",
