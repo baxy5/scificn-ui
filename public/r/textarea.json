@@ -3,11 +3,11 @@
   "name": "textarea",
   "type": "registry:ui",
   "title": "Textarea",
-  "description": "Multi-line text field with optional label and inline error message.",
-  "dependencies": [
-    "clsx"
+  "description": "Multi-line text input with label and error state.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
   ],
-  "registryDependencies": [],
   "files": [
     {
       "path": "ui/textarea/textarea.tsx",

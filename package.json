@@ -8,6 +8,7 @@
     "build": "node scripts/build-registry.mjs && next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "node --test scripts/build-registry.test.mjs",
     "build:lib": "tsup"
   },
   "dependencies": {

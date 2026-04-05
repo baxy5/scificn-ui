@@ -3,12 +3,13 @@
   "name": "tabs",
   "type": "registry:ui",
   "title": "Tabs",
-  "description": "Tabbed panel built on Radix UI. Active tab highlighted with green underline.",
+  "description": "Tab panels with teal active border glow.",
   "dependencies": [
-    "@radix-ui/react-tabs",
-    "clsx"
+    "@radix-ui/react-tabs"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/tabs/tabs.tsx",

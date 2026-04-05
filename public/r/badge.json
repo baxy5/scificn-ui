@@ -3,11 +3,13 @@
   "name": "badge",
   "type": "registry:ui",
   "title": "Badge",
-  "description": "Status indicator badge with ACTIVE, SCANNING, WARNING, CRITICAL, and OFFLINE variants.",
+  "description": "Status indicator with ACTIVE, OFFLINE, WARNING, CRITICAL, and SCANNING variants.",
   "dependencies": [
-    "clsx"
+    "class-variance-authority"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/badge/badge.tsx",

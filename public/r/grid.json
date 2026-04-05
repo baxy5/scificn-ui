@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid",
+  "type": "registry:ui",
+  "title": "Grid",
+  "description": "Responsive dashboard layout wrapper with pre-baked column presets and custom column support.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "ui/grid/grid.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport { cn } from '@/lib/utils'\n\nexport type GridPreset =\n  | '2-col'\n  | '3-col'\n  | '4-col'\n  | 'sidebar-main'\n  | 'main-sidebar'\n\n/**\n * Responsive Tailwind classes for each preset.\n * When `columns` prop is provided these are skipped and a custom\n * grid-template-columns inline style is used instead.\n */\nconst PRESET_CLASSES: Record<GridPreset, string> = {\n  '2-col':        'grid-cols-1 sm:grid-cols-2',\n  '3-col':        'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',\n  '4-col':        'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',\n  'sidebar-main': 'grid-cols-1 md:grid-cols-[240px_1fr]',\n  'main-sidebar': 'grid-cols-1 md:grid-cols-[1fr_240px]',\n}\n\nexport interface GridProps extends React.HTMLAttributes<HTMLDivElement> {\n  preset?:  GridPreset\n  /** Custom CSS grid-template-columns — overrides preset and disables responsive classes */\n  columns?: string\n  gap?:     string | number\n  /** Custom CSS grid-template-rows */\n  rows?:    string\n}\n\nconst Grid = React.forwardRef<HTMLDivElement, GridProps>(\n  (\n    {\n      className,\n      preset  = '2-col',\n      columns,\n      gap     = '1rem',\n      rows,\n      style,\n      ...props\n    },\n    ref\n  ) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          'grid',\n          // Use Tailwind responsive classes when no custom columns are set\n          !columns && PRESET_CLASSES[preset],\n          className\n        )}\n        style={{\n          // Custom columns override via inline style (no responsive behaviour)\n          ...(columns ? { gridTemplateColumns: columns } : {}),\n          gridTemplateRows: rows,\n          gap: typeof gap === 'number' ? `${gap}px` : gap,\n          ...style,\n        }}\n        {...props}\n      />\n    )\n  }\n)\nGrid.displayName = 'Grid'\n\nexport { Grid }\n"
+    }
+  ]
+}
