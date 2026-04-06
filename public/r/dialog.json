@@ -3,12 +3,13 @@
   "name": "dialog",
   "type": "registry:ui",
   "title": "Dialog",
-  "description": "Modal dialog built on Radix UI. Backdrop blur overlay with green-accented header.",
+  "description": "Modal dialog with void overlay and corner notch content panel.",
   "dependencies": [
-    "@radix-ui/react-dialog",
-    "clsx"
+    "@radix-ui/react-dialog"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/dialog/dialog.tsx",

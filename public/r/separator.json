@@ -3,12 +3,13 @@
   "name": "separator",
   "type": "registry:ui",
   "title": "Separator",
-  "description": "Horizontal or vertical rule with optional centered label.",
+  "description": "Horizontal or vertical divider with optional centered label.",
   "dependencies": [
-    "@radix-ui/react-separator",
-    "clsx"
+    "@radix-ui/react-separator"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/separator/separator.tsx",

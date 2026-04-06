@@ -3,14 +3,14 @@
   "name": "button",
   "type": "registry:ui",
   "title": "Button",
-  "description": "Command-style button with EXEC, OUTLINE, GHOST, and DANGER variants. Supports SM and MD sizes.",
+  "description": "Terminal-style action button with EXEC, GHOST, OUTLINE, and ABORT variants.",
   "dependencies": [
-    "class-variance-authority",
-    "clsx",
-    "tailwind-merge",
-    "@radix-ui/react-slot"
+    "@radix-ui/react-slot",
+    "class-variance-authority"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/button/button.tsx",

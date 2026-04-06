@@ -4,159 +4,268 @@
   "homepage": "https://scificn.dev",
   "items": [
     {
-      "name": "button",
+      "name": "alert",
       "type": "registry:ui",
-      "title": "Button",
-      "description": "Command-style button with EXEC, OUTLINE, GHOST, and DANGER variants. Supports SM and MD sizes.",
+      "title": "Alert",
+      "description": "Alert panel with STATUS, WARNING, CRITICAL, and INFO variants.",
       "dependencies": [
-        "class-variance-authority",
-        "clsx",
-        "tailwind-merge",
-        "@radix-ui/react-slot"
+        "class-variance-authority"
       ]
     },
     {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "description": "Status indicator badge with ACTIVE, SCANNING, WARNING, CRITICAL, and OFFLINE variants.",
+      "description": "Status indicator with ACTIVE, OFFLINE, WARNING, CRITICAL, and SCANNING variants.",
       "dependencies": [
-        "clsx"
+        "class-variance-authority"
       ]
     },
     {
-      "name": "alert",
+      "name": "bar-chart",
       "type": "registry:ui",
-      "title": "Alert",
-      "description": "Inline alert block with STATUS, WARNING, CRITICAL, and INFO variants. Includes icon prefix.",
+      "title": "Bar Chart",
+      "description": "CSS-only bar chart with horizontal and vertical orientations. No charting library dependency.",
+      "dependencies": []
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Navigation breadcrumb trail showing current location hierarchy.",
+      "dependencies": []
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Terminal-style action button with EXEC, GHOST, OUTLINE, and ABORT variants.",
       "dependencies": [
-        "clsx"
+        "@radix-ui/react-slot",
+        "class-variance-authority"
       ]
     },
     {
-      "name": "panel",
+      "name": "card",
       "type": "registry:ui",
-      "title": "Panel",
-      "description": "Container with optional corner-notch clip-path. Composes PanelHeader, PanelContent, and PanelFooter.",
-      "dependencies": [
-        "clsx"
-      ]
-    },
-    {
-      "name": "spinner",
-      "type": "registry:ui",
-      "title": "Spinner",
-      "description": "Animated loading indicator with SM, MD, and LG sizes. Optional text label.",
-      "dependencies": [
-        "clsx"
-      ]
-    },
-    {
-      "name": "separator",
-      "type": "registry:ui",
-      "title": "Separator",
-      "description": "Horizontal or vertical rule with optional centered label.",
-      "dependencies": [
-        "@radix-ui/react-separator",
-        "clsx"
-      ]
-    },
-    {
-      "name": "progress",
-      "type": "registry:ui",
-      "title": "Progress",
-      "description": "Linear progress bar built on Radix UI. Green fill with optional label and percentage display.",
-      "dependencies": [
-        "@radix-ui/react-progress",
-        "clsx"
-      ]
+      "title": "Card",
+      "description": "Surface container with header, content, and footer sections.",
+      "dependencies": []
     },
     {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "description": "Toggle checkbox built on Radix UI. Green checked state with optional label.",
+      "description": "Accessible checkbox with terminal-style filled square indicator.",
       "dependencies": [
-        "@radix-ui/react-checkbox",
-        "clsx"
-      ]
-    },
-    {
-      "name": "switch",
-      "type": "registry:ui",
-      "title": "Switch",
-      "description": "Toggle switch built on Radix UI. Slides between off (amber) and on (green) states.",
-      "dependencies": [
-        "@radix-ui/react-switch",
-        "clsx"
-      ]
-    },
-    {
-      "name": "input",
-      "type": "registry:ui",
-      "title": "Input",
-      "description": "Text input with optional label, prefix symbol, and inline error message.",
-      "dependencies": [
-        "clsx"
-      ]
-    },
-    {
-      "name": "textarea",
-      "type": "registry:ui",
-      "title": "Textarea",
-      "description": "Multi-line text field with optional label and inline error message.",
-      "dependencies": [
-        "clsx"
-      ]
-    },
-    {
-      "name": "select",
-      "type": "registry:ui",
-      "title": "Select",
-      "description": "Dropdown selector built on Radix UI. Supports groups, labels, and separators.",
-      "dependencies": [
-        "@radix-ui/react-select",
-        "clsx"
+        "@radix-ui/react-checkbox"
       ]
     },
     {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "description": "Modal dialog built on Radix UI. Backdrop blur overlay with green-accented header.",
+      "description": "Modal dialog with void overlay and corner notch content panel.",
       "dependencies": [
-        "@radix-ui/react-dialog",
-        "clsx"
+        "@radix-ui/react-dialog"
+      ]
+    },
+    {
+      "name": "grid",
+      "type": "registry:ui",
+      "title": "Grid",
+      "description": "Responsive dashboard layout wrapper with pre-baked column presets and custom column support.",
+      "dependencies": []
+    },
+    {
+      "name": "heatmap",
+      "type": "registry:ui",
+      "title": "Heatmap",
+      "description": "Grid of colored cells showing density or activity. Opacity-based intensity scaling. Supports row/column labels.",
+      "dependencies": []
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text input with label, error state, and optional prefix character.",
+      "dependencies": []
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard key display element styled as a terminal key cap.",
+      "dependencies": []
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Accessible form label using Radix UI Label primitive.",
+      "dependencies": [
+        "@radix-ui/react-label"
+      ]
+    },
+    {
+      "name": "line-chart",
+      "type": "registry:ui",
+      "title": "Line Chart",
+      "description": "SVG line chart with multi-series support, animated draw-on, area fill, grid lines, and legend.",
+      "dependencies": []
+    },
+    {
+      "name": "node-graph",
+      "type": "registry:ui",
+      "title": "Node Graph",
+      "description": "SVG node-edge graph with responsive width, directed arrowheads, animated marching-ants edges, and per-node status colors.",
+      "dependencies": []
+    },
+    {
+      "name": "panel",
+      "type": "registry:ui",
+      "title": "Panel",
+      "description": "Container with corner notch via clip-path. Composable Panel, PanelHeader, PanelTitle, PanelContent, PanelFooter.",
+      "dependencies": []
+    },
+    {
+      "name": "progress-ring",
+      "type": "registry:ui",
+      "title": "Progress Ring",
+      "description": "SVG circular gauge with glow arc. Complements the linear Progress bar. Variants: DEFAULT, ACTIVE, WARNING, CRITICAL.",
+      "dependencies": []
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress bar with bracket-style ASCII display [====    ] 58%.",
+      "dependencies": [
+        "@radix-ui/react-progress"
+      ]
+    },
+    {
+      "name": "radar-chart",
+      "type": "registry:ui",
+      "title": "Radar Chart",
+      "description": "SVG radar/spider chart with configurable axes, animated fade-in, grid polygons, and four color variants.",
+      "dependencies": []
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Accessible dropdown select with terminal styling.",
+      "dependencies": [
+        "@radix-ui/react-select"
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Horizontal or vertical divider with optional centered label.",
+      "dependencies": [
+        "@radix-ui/react-separator"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Loading placeholder block that animates with a pulsing glow.",
+      "dependencies": []
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "ASCII-style rotating spinner with optional label.",
+      "dependencies": []
+    },
+    {
+      "name": "stat-card",
+      "type": "registry:ui",
+      "title": "Stat Card",
+      "description": "Metric tile with value, label, delta indicator, and status variants for dashboards.",
+      "dependencies": [
+        "class-variance-authority"
+      ]
+    },
+    {
+      "name": "status-grid",
+      "type": "registry:ui",
+      "title": "Status Grid",
+      "description": "System health board showing service names with live status indicators. Supports 1–3 columns.",
+      "dependencies": []
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Toggle switch with ASCII bracket style [OFF]/[ON] display.",
+      "dependencies": [
+        "@radix-ui/react-switch"
       ]
     },
     {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "description": "Tabbed panel built on Radix UI. Active tab highlighted with green underline.",
+      "description": "Tab panels with teal active border glow.",
       "dependencies": [
-        "@radix-ui/react-tabs",
-        "clsx"
+        "@radix-ui/react-tabs"
+      ]
+    },
+    {
+      "name": "terminal",
+      "type": "registry:ui",
+      "title": "Terminal",
+      "description": "Scrollable log/output block with typed line entries, color-coded types, and a blinking cursor.",
+      "dependencies": []
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text input with label and error state.",
+      "dependencies": []
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Toast notifications with useToast hook. STATUS, WARNING, CRITICAL, INFO variants.",
+      "dependencies": [
+        "@radix-ui/react-toast"
       ]
     },
     {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "description": "Contextual label built on Radix UI. Fade + zoom animation. Requires TooltipProvider.",
+      "description": "Accessible tooltip with no arrow, surface-raised background.",
       "dependencies": [
-        "@radix-ui/react-tooltip",
-        "clsx"
+        "@radix-ui/react-tooltip"
       ]
     },
     {
-      "name": "toast",
+      "name": "typography",
       "type": "registry:ui",
-      "title": "Toast",
-      "description": "Non-blocking notification built on Radix UI. Four semantic variants. Managed via useToast hook.",
+      "title": "Typography",
+      "description": "Type scale components for headings, body text, and code display.",
       "dependencies": [
-        "@radix-ui/react-toast",
-        "clsx"
+        "class-variance-authority"
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "The cn() utility combining clsx and tailwind-merge.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
       ]
     }
   ]

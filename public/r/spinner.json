@@ -3,11 +3,11 @@
   "name": "spinner",
   "type": "registry:ui",
   "title": "Spinner",
-  "description": "Animated loading indicator with SM, MD, and LG sizes. Optional text label.",
-  "dependencies": [
-    "clsx"
+  "description": "ASCII-style rotating spinner with optional label.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
   ],
-  "registryDependencies": [],
   "files": [
     {
       "path": "ui/spinner/spinner.tsx",

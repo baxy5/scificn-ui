@@ -3,12 +3,13 @@
   "name": "tooltip",
   "type": "registry:ui",
   "title": "Tooltip",
-  "description": "Contextual label built on Radix UI. Fade + zoom animation. Requires TooltipProvider.",
+  "description": "Accessible tooltip with no arrow, surface-raised background.",
   "dependencies": [
-    "@radix-ui/react-tooltip",
-    "clsx"
+    "@radix-ui/react-tooltip"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/tooltip/tooltip.tsx",

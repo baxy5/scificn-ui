@@ -3,11 +3,11 @@
   "name": "panel",
   "type": "registry:ui",
   "title": "Panel",
-  "description": "Container with optional corner-notch clip-path. Composes PanelHeader, PanelContent, and PanelFooter.",
-  "dependencies": [
-    "clsx"
+  "description": "Container with corner notch via clip-path. Composable Panel, PanelHeader, PanelTitle, PanelContent, PanelFooter.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
   ],
-  "registryDependencies": [],
   "files": [
     {
       "path": "ui/panel/panel.tsx",

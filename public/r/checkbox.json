@@ -3,12 +3,13 @@
   "name": "checkbox",
   "type": "registry:ui",
   "title": "Checkbox",
-  "description": "Toggle checkbox built on Radix UI. Green checked state with optional label.",
+  "description": "Accessible checkbox with terminal-style filled square indicator.",
   "dependencies": [
-    "@radix-ui/react-checkbox",
-    "clsx"
+    "@radix-ui/react-checkbox"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "ui/checkbox/checkbox.tsx",

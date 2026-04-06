@@ -3,11 +3,11 @@
   "name": "input",
   "type": "registry:ui",
   "title": "Input",
-  "description": "Text input with optional label, prefix symbol, and inline error message.",
-  "dependencies": [
-    "clsx"
+  "description": "Text input with label, error state, and optional prefix character.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
   ],
-  "registryDependencies": [],
   "files": [
     {
       "path": "ui/input/input.tsx",

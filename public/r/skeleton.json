@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "Loading placeholder block that animates with a pulsing glow.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "ui/skeleton/skeleton.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}\n\nfunction Skeleton({ className, ...props }: SkeletonProps) {\n  return (\n    <div\n      className={cn(\n        'animate-pulse bg-[var(--surface-raised)] border border-[var(--border)]',\n        'rounded-none',\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n"
+    }
+  ]
+}

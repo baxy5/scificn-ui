@@ -8,7 +8,8 @@
     "build": "node scripts/build-registry.mjs && next build",
     "start": "next start",
     "lint": "next lint",
-    "build:lib": "tsup"
+    "build:lib": "tsup",
+    "test": "node --test scripts/build-registry.test.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
