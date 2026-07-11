@@ -107,7 +107,7 @@ See the **Installation** page in the docs for the full step-by-step.
 
 ```bash
 npm install
-npm run dev          # docs site at http://localhost:5173
+npm run dev          # docs site at http://localhost:3000
 npm run build        # builds registry + docs site
 npm run build:registry  # regenerate public/r/*.json only
 ```
